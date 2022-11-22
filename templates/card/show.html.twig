@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Carte{% endblock %}
+
+{% block main %}
+
+    <h1>{{ card.name }}</h1>
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th>Propriétaire</th>
+                <td>
+                    {{ card.myCollection.owner }}
+                </td>
+            </tr>
+
+            <tr>
+                <th>Collection</th>
+                <td>
+                    <a href="{{ path('app_my_collection_show', {'id': card.myCollection.id}) }}">{{ card.myCollection }}</a>
+                </td>
+            </tr>
+
+            <tr>
+                <th>Couleur</th>
+                <td>
+                {% for color in card.color %}
+                    <img class="color" src="/images/colors/{{ color.name }}.svg" alt="color {{ color.name }}" width="20px" height="20px"/>
+                {% else %}
+                </td>
+
+                {% endfor %}
+
+            </tr>
+
+            <tr>
+                <th>Type</th>
+                <td>{{ card.type|join('-') }}</td>
+            </tr>
+
+            <tr>
+                <th>Mana</th>
+                <td>{{ card.mana|join(', ') }}</td>
+            </tr>
+
+            <tr>
+                <th>Édition</th>
+                <td>{{ card.edition|join(', ') }}</td>
+            </tr>
+
+            <tr>
+                <th>Rareté</th>
+                <td>{{ card.rarity|join(', ') }}</td>
+            </tr>
+
+            <tr>
+                <th>Decks</th>
+                <td>
+                    {% for deck in card.decks %}
+                        <li>
+                            <a href="{{ path('app_deck_show', {'id': deck.id}) }}">{{ deck }}</a>
+                        </li>
+                    {% else %}
+                        <em>Pas de decks créés</em>
+                    {% endfor %}
+
+                </td>
+            </tr>
+
+            {% if card.imageName %}
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ vich_uploader_asset(card, 'imageFile') }}" alt="carte {{ card.name }}"/></td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+    <div class="edit-button">
+        {% if connect %}
+            <a class="btn btn-primary" href="{{ path('app_card_edit', {'id': card.id}) }}">Modifier</a>
+        {% endif %}
+    </div>
+    <a class="btn btn-primary" href="{{ path('app_card_index') }}">Retour</a>
+{% endblock %}

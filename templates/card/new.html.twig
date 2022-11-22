@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Carte{% endblock %}
+
+{% block main %}
+    <h1>Créer une nouvelle carte</h1>
+
+    {{ include('card/_form.html.twig') }}
+
+    <a class="btn btn-primary" href="{{ path('app_card_index') }}">Retour</a>
+{% endblock %}

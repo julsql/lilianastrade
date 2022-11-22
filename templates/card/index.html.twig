@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Cartes{% endblock %}
+
+
+{% block main %}
+    <h1>Liste des cartes</h1>
+
+    <a class="btn btn-primary" href="{{ path('app_card_new') }}">Ajouter</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Collection</th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th>Propriétaire</th>
+                {% endif %}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for card in cards %}
+            <tr>
+                <td>{{ card.name }}</td>
+                <td>{{ card.myCollection }}</td>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <td>{{ card.myCollection.owner }}</td>
+                {% endif %}
+                <td>
+                    <a class="btn btn-detail" href="{{ path('app_card_show', {'id': card.id}) }}">Détail</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Aucun carte disponible</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('app_card_new') }}">Ajouter</a>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier Carte{% endblock %}
+
+{% block main %}
+    <h1>Modifier une carte</h1>
+
+        {% if connect %}
+            {{ include('card/_form.html.twig', {'button_label': 'Modifier'}) }}
+            {{ include('card/_delete_form.html.twig') }}
+        {% endif %}
+
+    <a class="btn btn-primary" href="{{ path('app_card_index') }}">Retour</a>
+{% endblock %}

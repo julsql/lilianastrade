@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Marchand{% endblock %}
+
+{% block main %}
+
+    <h1>Mon profil</h1>
+    <h2>{{ merchant.pseudo }}</h2>
+
+    <h3>Collections</h3>
+    <ul>
+        {% for myCollection in merchant.myCollection %}
+            <li>
+                <a href="{{ path('app_my_collection_show', {'id' : myCollection.id}) }}">{{ myCollection }}</a>
+            </li>
+        {% else %}
+            <p>Pas de decks publiés</p>
+        {% endfor %}
+
+
+    </ul>
+
+    <h3>Decks</h3>
+    <ul>
+
+        {% for deck in decks %}
+            <li>
+                <a href="{{ path('app_deck_show', {'id' : deck.id}) }}">{{ deck }}</a>
+            </li>
+        {% else %}
+            <p>Pas de decks publiés</p>
+        {% endfor %}
+
+    </ul>
+
+    <div class="edit-button">
+        <a class="btn btn-primary" href="{{ path('app_my_collection_new', {'id': merchant.id}) }}">Nouvelle collection</a>
+        <a class="btn btn-primary" href="{{ path('app_deck_new', {'id': merchant.id}) }}">Nouveau deck</a>
+    </div>
+    {% if admin %}
+        <a class="btn btn-primary" href="{{ path('app_merchant_index') }}">Marchands</a>
+    {% endif %}
+{% endblock %}
