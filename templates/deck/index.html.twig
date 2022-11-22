@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Decks{% endblock %}
+
+{% block main %}
+    <h1>Liste des decks</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>Propriétaire</th>
+                <th>Nombre de cartes</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for deck in decks %}
+            <tr>
+                <td>{{ deck.name }}</td>
+                <td>{{ deck.description }}</td>
+                <td>{{ deck.owner }}</td>
+                <td>{{ deck.cards|length }}</td>
+                <td>{{ deck.published ? 'Publié' : 'Non publié' }}</td>
+                <td>
+                    <a class="btn btn-detail" href="{{ path('app_deck_show', {'id': deck.id}) }}">Détail</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Aucun deck disponible</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

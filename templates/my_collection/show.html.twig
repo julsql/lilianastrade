@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Collection{% endblock %}
+
+{% block main %}
+    <h1>Collection</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ myCollection.name }}</td>
+            </tr>
+
+            <tr>
+                <th>Propriétaire</th>
+                <td>{{ myCollection.owner }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Cartes</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for card in myCollection.card %}
+            <tr>
+                <td><a href="{{ path('app_card_show', {'id': card.id}) }}">{{ card.name }}</a></td>
+            </tr>
+        {% endfor %} {# todos #}
+        </tbody>
+    </table>
+
+    <div class="edit-button">
+        {% if connect %}
+            <a class="btn btn-primary" href="{{ path('app_my_collection_edit', {'id_collection': myCollection.id, 'id_merchant': myCollection.owner.id}) }}">Modifier</a>
+            {{ include('my_collection/_delete_form.html.twig') }}
+            <a class="btn btn-primary" href="{{ path('app_card_new') }}">Ajouter une carte</a>
+        {% endif %}
+    </div>
+
+    <a class="btn btn-primary" href="{{ path('app_my_collection_index') }}">Retour</a>
+
+{% endblock %}

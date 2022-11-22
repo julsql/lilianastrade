@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Collections{% endblock %}
+
+{% block main %}
+    <h1>Liste des collections</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Propriétaire</th>
+                <th>Nombre de cartes</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for myCollection in myCollections %}
+            <tr>
+                <td>{{ myCollection.name }}</td>
+                <td>{{ myCollection.owner }}</td>
+                <td>{{ myCollection.card|length }}</td>
+                <td>
+                    <a class="btn btn-detail" href="{{ path('app_my_collection_show', {'id' : myCollection.id}) }}">Détail</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">Pas de collection disponible</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Marchands{% endblock %}
+
+{% block main %}
+    <h1>Liste des Marchands</h1>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Pseudo</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for merchant in merchants %}
+            <tr>
+                <td>{{ merchant.pseudo }}</td>
+                <td>
+                    <a href="{{ path('app_merchant_show_id', {'id': merchant.id}) }}">Détail</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">Pas de marchand disponible</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

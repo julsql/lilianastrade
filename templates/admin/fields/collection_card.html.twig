@@ -1,0 +1,19 @@
+{# source: https://stackoverflow.com/a/65082524/1814910 #}
+<ul>
+    {% for Mycollection in field.value %}
+    {%- set url = ea_url()
+        .setController('App\\Controller\\Admin\\MyCollectionCrudController')
+        .setAction('detail')
+        .setEntityId(Mycollection.id)
+    -%}
+    <li>
+        <a href="{{ url }}">
+            {{ Mycollection }}
+        </a>
+    </li>
+    {% else %}
+</ul>
+<span class="badge badge-secondary">None</span>
+<ul>
+    {% endfor %}
+</ul>
