@@ -1,0 +1,11 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        cards:
+            delete_on_remove: true
+            delete_on_update: true
+            inject_on_load: true
+            uri_prefix: /images/cards
+            upload_destination: '%kernel.project_dir%/public/images/cards'
+

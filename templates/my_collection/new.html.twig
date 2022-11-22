@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Collection{% endblock %}
+
+{% block main %}
+    <h1>Créer une nouvelle collection</h1>
+
+    {{ include('my_collection/_form.html.twig') }}
+
+    <a class="btn btn-primary" href="{{ path('app_merchant_show', {'id': myCollection.owner.id}) }}">Retour au marchand</a>
+{% endblock %}

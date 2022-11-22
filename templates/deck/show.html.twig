@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Deck{% endblock %}
+
+{% block main %}
+    <h1>Deck</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Nom</th>
+                <td>{{ deck.name }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ deck.description }}</td>
+            </tr>
+            <tr>
+                <th>Publié</th>
+                <td>{{ deck.published ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>Propriétaire</th>
+                <td>{{ deck.owner }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Cartes</th>
+    </tr>
+    </thead>
+    <tbody>
+        {% for card in deck.cards %}
+            <tr>
+                <td><a href="{{ path('app_deck_card_show', {'deck_id': deck.id, 'card_id' : card.id}) }}">{{ card }}</a></td>
+            </tr>
+        {% endfor %}
+    </ul>
+    </tbody>
+</table>
+    <div class="edit-button">
+        {% if connect %}
+            <a class="btn btn-primary" href="{{ path('app_deck_edit', {'id': deck.id}) }}">Modifier</a>
+            {{ include('deck/_delete_form.html.twig') }}
+        {% endif %}
+    </div>
+    <a class="btn btn-primary" href="{{ path('app_deck_index') }}">Retour</a>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block main %}
+
+    <h1>Liliana's Trade</h1>
+    <img src="images/deco/Liliana.jpg" alt="Liliana image" id="lilianaHome"/>
+    <h2>Vous voici au cœur du marché de Liliana…</h2>
+
+    {% if connexion %}
+        <p id="presentation">Vous pouvez consulter les <a href="{{ path('app_deck_index') }}">decks</a> publiques des marchands, ou voir votre <a href="{{ path('app_merchant_show') }}">page</a> pour gérer votre collection de cartes.</p>
+    {% else %}
+        <p id="presentation">Vous pouvez consulter les <a href="{{ path('app_deck_index') }}">decks</a> publiques des marchands, ou vous <a href="{{ path('app_login') }}">connecter</a> pour gérer votre collection de cartes.</p>
+    {% endif %}
+
+    <img src="images/deco/Liliana2.jpg" alt="Liliana image Bas" id="lilianaHomeBas"/>
+
+{% endblock %}

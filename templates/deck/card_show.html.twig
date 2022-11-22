@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Deck{% endblock %}
+
+{% block main %}
+
+    <h1>{{ card.name }}</h1>
+
+    <table class="table">
+        <tbody>
+
+        <tr>
+            <th>Propriétaire</th>
+            <td>
+                {{ card.myCollection.owner }}
+            </td>
+        </tr>
+
+        <tr>
+            <th>Collection</th>
+            <td>{{ card.myCollection }}</td>
+        </tr>
+
+        <tr>
+            <th>Deck</th>
+            <td>{{ card.decks|join(', ') }}</td>
+        </tr>
+
+        <tr>
+            <th>Couleur</th>
+            <td>{{ card.color|join(', ') }}</td>
+        </tr>
+
+        <tr>
+            <th>Type</th>
+            <td>{{ card.type|join('-') }}</td>
+        </tr>
+
+        <tr>
+            <th>Mana</th>
+            <td>{{ card.mana|join(', ') }}</td>
+        </tr>
+
+        <tr>
+            <th>Édition</th>
+            <td>{{ card.edition|join(', ') }}</td>
+        </tr>
+
+        <tr>
+            <th>Rareté</th>
+            <td>{{ card.rarity|join(', ') }}</td>
+        </tr>
+
+        {% if card.imageName %}
+            <tr>
+                <th>Image</th>
+                <td><img src="{{ vich_uploader_asset(card, 'imageFile') }}" alt="carte {{ card.name }}"/></td>
+            </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+
+    <div class="edit-button">
+        {% if connect %}
+            <a class="btn btn-primary" href="{{ path('app_card_edit', {'id': card.id}) }}">Modifier</a>
+            {{ include('card/_delete_form.html.twig') }}
+        {% endif %}
+    </div>
+
+    <a class="btn btn-primary" href="{{ path('app_deck_show', { 'id': deck.id}) }}">Retour au deck</a>
+
+{% endblock %}
