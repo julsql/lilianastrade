@@ -12,8 +12,8 @@
         "doctrine/doctrine-bundle": "^2.7",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.13",
-        "easycorp/easyadmin-bundle": "^4",
-        "halloverden/symfony-doctrine-sql-logger-bundle": "^2.0",
+        "easycorp/easyadmin-bundle": "^3",
+        "halloverden/symfony-doctrine-sql-logger-bundle": "^1.0",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.13",
         "sensio/framework-extra-bundle": "^6.1",
@@ -93,8 +93,7 @@
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd",
-            "requirements-checker": "script",
-            "security-checker security:check": "script"
+            "requirements-checker": "script"
         },
         "post-install-cmd": [
             "@auto-scripts"
