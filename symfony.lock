@@ -54,7 +54,7 @@
         ]
     },
     "easycorp/easyadmin-bundle": {
-        "version": "3.5",
+        "version": "4.5",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
@@ -63,7 +63,7 @@
         }
     },
     "halloverden/symfony-doctrine-sql-logger-bundle": {
-        "version": "1.2.0"
+        "version": "2.0.0"
     },
     "phpunit/phpunit": {
         "version": "9.5",
