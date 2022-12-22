@@ -66,4 +66,3 @@ task('deploy', [
 ])->desc('Deploy your project');
 
 after('deploy:failed', 'deploy:unlock');
-?>
