@@ -7,8 +7,8 @@ Site web codé par Juliette Debono
 ## Utilisateurs
 
 3 utilisateurs :
-* Ayris
-  * ayris2001@gmail.com
+* User
+  * user@email.com
   * 1234
 
 * Skyfred 

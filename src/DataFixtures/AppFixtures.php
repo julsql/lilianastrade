@@ -15,7 +15,6 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
-use Symfony\Component\HttpFoundation\File\File;
 
 
 class AppFixtures extends Fixture implements DependentFixtureInterface
@@ -27,7 +26,7 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
      */
     private static function merchantDataGenerator()
     {
-        yield ["Ayris", "ayris2001@gmail.com"];
+        yield ["User", "user@email.com"];
         yield ["Skyfred", "skyfred@gmail.com"];
         yield ["Wolffair", "juliette.debono2002@gmail.com"];
     }
@@ -39,7 +38,7 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
      */
     private static function myCollectionDataGenerator()
     {
-        yield ["Collection", "Ayris"];
+        yield ["Collection", "User"];
         yield ["Collection utilisée", "Skyfred"];
         yield ["Collection réserve", "Skyfred"];
         yield ["Collection", "Wolffair"];
@@ -150,7 +149,7 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
         yield ["Orzhov", "Blanc noir", "Skyfred", true];
         yield ["Vial Smasher/Clone", "Grixis", "Skyfred", true];
         yield ["Kinnan", "Deck combo", "Skyfred", false];
-        yield ["Témur Landfall", "Toucheterre aggro", "Ayris", false];
+        yield ["Témur Landfall", "Toucheterre aggro", "User", false];
         yield ["Kenneth", "Cinq couleurs et combo", "Wolffair", true];
         yield ["Vent des vertues", "Tricolore toucheterre", "Wolffair", true];
     }
@@ -168,9 +167,9 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
         yield ["Joraga Treespeaker",          "Collection", "Wolffair", ['Vent des vertues'], ['Creature'], "Normal", ['green'], 1, "Ikoria", "Uncommon"];
         yield ["Prophet of Distortion",       "Collection", "Wolffair", ['Kenneth', 'Vent des vertues'], ['Creature'], "Normal", ['blue'], 1, "Ikoria", "Uncommon"];
         yield ["Eldrazi Mimic",               "Collection", "Wolffair", ['Kenneth'], ['Creature'], "Normal", ['colorless'], 2, "Ikoria", "Rare"];
-        yield ["Incubation Druid",            "Collection", "Ayris", ['Témur Landfall'], ['Creature'], "Normal", ['green'], 2, "Ikoria", "Rare"];
-        yield ["Kiora's Follower",            "Collection", "Ayris", ['Témur Landfall'], ['Creature'], "Normal", ['green', 'blue'], 2, "Dominaria", "Uncommon"];
-        yield ["Ornithopter of Paradise",     "Collection", "Ayris", ['Témur Landfall'], ['Artifact', 'Creature'], "Normal", ['colorless'], 2, "Dominaria", "Common"];
+        yield ["Incubation Druid",            "Collection", "User", ['Témur Landfall'], ['Creature'], "Normal", ['green'], 2, "Ikoria", "Rare"];
+        yield ["Kiora's Follower",            "Collection", "User", ['Témur Landfall'], ['Creature'], "Normal", ['green', 'blue'], 2, "Dominaria", "Uncommon"];
+        yield ["Ornithopter of Paradise",     "Collection", "User", ['Témur Landfall'], ['Artifact', 'Creature'], "Normal", ['colorless'], 2, "Dominaria", "Common"];
         yield ["Phyrexian Revoker",           "Collection utilisée", "Skyfred", ['Vial Smasher/Clone'], ['Artifact', 'Creature'], "Normal", ['colorless'], 2, "Ikoria", "Rare"];
         yield ["Elvish Archdruid",            "Collection réserve", "Skyfred", ['Kinnan'], ['Creature'], "Normal", ['green'], 3, "Ikoria", "Rare"];
         yield ["Eternal Witness",             "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Creature'], "Normal", ['green'], 3, "Ikoria", "Uncommon"];
@@ -179,11 +178,11 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
         yield ["Trophy Mage",                 "Collection", "Wolffair", ['Kenneth'], ['Creature'], "Normal", ['blue'], 3, "Dominaria", "Uncommon"];
         yield ["Arixmethes, Slumbering Isle", "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Creature'], "Legendary", ['green', 'blue'], 4, "Ikoria", "Rare"];
         yield ["Karametra's Acolyte",         "Collection utilisée", "Skyfred", ['Vial Smasher/Clone'], ['Creature'], "Legendary", ['green'], 4, "Ikoria", "Uncommon"];
-        yield ["Nylea, Keen-Eyed",            "Collection", "Ayris", ['Témur Landfall'], ['Enchantment', 'Creature'], "Legendary", ['green'], 4, "Ikoria", "Mythic"];
+        yield ["Nylea, Keen-Eyed",            "Collection", "User", ['Témur Landfall'], ['Enchantment', 'Creature'], "Legendary", ['green'], 4, "Ikoria", "Mythic"];
         yield ["Solemn Simulacrum",           "Collection utilisée", "Skyfred", ['Orzhov'], ['Artifact', 'Creature'], "Normal", ['colorless'], 4, "Ikoria", "Rare"];
         yield ["Murkfiend Liege",             "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Creature'], "Normal", ['green', 'blue'], 11, "Ikoria", "Rare"];
-        yield ["Seedborn Muse",               "Collection", "Ayris", ['Témur Landfall'], ['Creature'], "Normal", ['green'], 5, "The Brothers War", "Rare"];
-        yield ["Wandering Archaic",           "Collection", "Ayris", ['Témur Landfall'], ['Creature'], "Normal", ['colorless'], 5, "Ikoria", "Rare"];
+        yield ["Seedborn Muse",               "Collection", "User", ['Témur Landfall'], ['Creature'], "Normal", ['green'], 5, "The Brothers War", "Rare"];
+        yield ["Wandering Archaic",           "Collection", "User", ['Témur Landfall'], ['Creature'], "Normal", ['colorless'], 5, "Ikoria", "Rare"];
         yield ["Bane of Progress",            "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Creature'], "Normal", ['green'], 6, "Dominaria", "Rare"];
         yield ["Cradle Clearcutter",          "Collection", "Wolffair", ['Kenneth'], ['Artifact', 'Creature'], "Normal", ['colorless'], 6, "Ikoria", "Uncommon"];
         yield ["Endbringer",                  "Collection utilisée", "Skyfred", ['Orzhov'], ['Creature'], "Normal", ['colorless'], 6, "Ikoria", "Rare"];
@@ -196,7 +195,7 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
         yield ["An Offer You Can't Refuse",   "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Instant'], "", ['blue'], 1, "Ikoria", "Uncommon"];
         yield ["Brainstorm",                  "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Instant'], "", ['blue'], 1, "Ikoria", "Common"];
         yield ["Worldly Tutor",               "Collection utilisée", "Skyfred", ['Orzhov'], ['Instant'], "", ['green'], 1, "Dominaria", "Uncommon"];
-        yield ["Counterspell",                "Collection", "Ayris", ['Témur Landfall'], ['Instant'], "", ['blue'], 2, "Ikoria", "Common"];
+        yield ["Counterspell",                "Collection", "User", ['Témur Landfall'], ['Instant'], "", ['blue'], 2, "Ikoria", "Common"];
         yield ["Dramatic Reversal",           "Collection utilisée", "Skyfred", ['Kinnan'], ['Instant'], "", ['blue'], 2, "Ikoria", "Common"];
         yield ["Negate",                      "Collection", "Wolffair", ['Kenneth', 'Vent des vertues'], ['Instant'], "", ['blue'], 2, "Ikoria", "Common"];
         yield ["Scatter Ray",                 "Collection", "Wolffair", ['Kenneth', 'Vent des vertues'], ['Instant'], "", ['blue'], 2, "Ikoria", "Common"];
@@ -225,16 +224,16 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
         yield ["Sylvan Library",              "Collection réserve", "Skyfred", ['Kinnan'], ['Enchantment'], "Normal", ['green'], 2, "Ikoria", "Rare"];
         yield ["Awakening Zone",              "Collection", "Wolffair", ['Kenneth'], ['Enchantment'], "Normal", ['green'], 3, "Midnight Hunt", "Rare"];
         yield ["Freed from the Real",         "Collection utilisée", "Skyfred", ['Orzhov'], ['Enchantment'], "Normal", ['blue'], 3, "Ikoria", "Common"];
-        yield ["Court of Bounty",             "Collection", "Ayris", ['Témur Landfall'], ['Enchantment'], "Normal", ['green'], 4, "Ikoria", "Rare"];
+        yield ["Court of Bounty",             "Collection", "User", ['Témur Landfall'], ['Enchantment'], "Normal", ['green'], 4, "Ikoria", "Rare"];
         yield ["Leyline of Anticipation",     "Collection utilisée", "Skyfred", ['Orzhov'], ['Enchantment'], "Normal", ['blue'], 4, "Midnight Hunt", "Rare"];
         yield ["Command Tower",               "Collection utilisée", "Skyfred", ['Vial Smasher/Clone'], ['Land'], "Normal", ['colorless'], 0, "Dominaria", "Common"];
         yield ["Emergence Zone",              "Collection", "Wolffair", ['Kenneth'], ['Land'], "Normal", ['colorless'], 0, "Ikoria", "Uncommon"];
-        yield ["Exotic Orchard",              "Collection", "Ayris", ['Témur Landfall'], ['Land'], "Normal", ['colorless'], 0, "Dominaria", "Rare"];
+        yield ["Exotic Orchard",              "Collection", "User", ['Témur Landfall'], ['Land'], "Normal", ['colorless'], 0, "Dominaria", "Rare"];
         yield ["Forest",                      "Collection", "Wolffair", ['Kenneth', 'Vent des vertues'], ['Basic Land'], "", ['colorless'], 0, "Ikoria", "Common"];
         yield ["Island",                      "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Basic Land'], "", ['colorless'], 0, "The Brothers War", "Common"];
         yield ["Simic Growth Chamber",        "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Land'], "Normal", ['colorless'], 0, "Ikoria", "Uncommon"];
         yield ["Temple of Mystery",           "Collection", "Wolffair", ['Kenneth', 'Vent des vertues'], ['Land'], "Normal", ['colorless'], 0, "Midnight Hunt", "Rare"];
-        yield ["Vineglimmer Snarl",           "Collection", "Ayris", ['Témur Landfall'], ['Land'], "Normal", ['colorless'], 0, "Midnight Hunt", "Rare"];
+        yield ["Vineglimmer Snarl",           "Collection", "User", ['Témur Landfall'], ['Land'], "Normal", ['colorless'], 0, "Midnight Hunt", "Rare"];
         yield ["Yavimaya Coast",              "Collection réserve", "Skyfred", ['Kinnan'], ['Land'], "Normal", ['colorless'], 0, "Ikoria", "Rare"];
     }
 

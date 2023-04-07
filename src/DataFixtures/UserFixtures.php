@@ -47,7 +47,7 @@ class UserFixtures extends Fixture
     private function getUserData()
     {
         yield [
-            'ayris2001@gmail.com',
+            'user@email.com',
             '1234',
             'ROLE_USER'
         ];
