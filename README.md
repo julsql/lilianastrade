@@ -78,6 +78,8 @@ Mise en place classique de la VM (git, …)
 
 ### Enfin
 
+On modifie le fichier . env pour choisi sqlite comme driver.
+
 Puis on lance sur la VM dans le dossier racine du projet :
 
     rm -fr composer.lock symfony.lock var/cache/ vendor/
