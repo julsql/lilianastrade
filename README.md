@@ -38,6 +38,7 @@ Mise en place classique de la VM (git, …)
 
     sudo apt update
     sudo apt full-upgrade
+    
     sudo apt install php8.1-cli
     sudo apt install php8.1-xml php8.1-sqlite3 php8.1-intl php8.1-mbstring
     php -m | grep "xml\|sqlite\|intl"
@@ -49,6 +50,7 @@ Mise en place classique de la VM (git, …)
         xmlreader
         xmlwriter
     curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | sudo -E bash
+    sudo apt-get install php-zip
     sudo apt install symfony-cli
     sudo apt install sqlite3
     symfony check:requirements
