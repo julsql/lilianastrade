@@ -82,8 +82,18 @@ It's a Django project that manage collection of magic card.
     symfony check:requirements
     symfony composer -V
    ```
+   
+4. Clone the repo
 
-4. Reload composer and the database
+    ```bash
+    git clone git@github.com:juliette39/lilianastrade.git
+    ```
+
+5. Change `.env`
+
+    > Chose the driver sqlite and not postgresql
+
+6. Reload composer and the database
 
     ```bash
     rm -fr composer.lock symfony.lock var/cache/ vendor/
@@ -96,7 +106,8 @@ It's a Django project that manage collection of magic card.
     symfony console doctrine:fixtures:load -n
     ```
 
-5. Launch the website
+7. Launch the website
+
     ```bash
     symfony server:start
     ```
@@ -112,8 +123,10 @@ Put the repo in `/var/www/lilianastrade`
 Then run the authorizations:
 
 ```bash
-sudo chmod 777 /var/www/lilianastrade/var/log/dev.log
-sudo chown www-data:www-data /var/www/lilianastrade/var/log/dev.log
+sudo chmod 777 /var/www/lilianastrade/var/log/
+sudo chown www-data:www-data /var/www/lilianastrade/var/log/
+sudo chmod 777 /var/www/lilianastrade/var/cache/
+sudo chown www-data:www-data /var/www/lilianastrade/var/cache/
 ```
 
 Then configure the VM as follows:
