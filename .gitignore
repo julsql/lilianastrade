@@ -1,22 +1,48 @@
+*.DS_Store
 
-###> symfony/framework-bundle ###
+# Dossiers Symfony var/
+/var/*
+
+# Dossiers Composer
+/vendor/
+/bin/
+/node_modules/
+/public/bundles/
+/public/build/
+/public/uploads/
+/public/media/
+
+# Fichiers Symfony
 /.env.local
 /.env.local.php
-/.env.*.local
-/config/secrets/prod/prod.decrypt.private.php
-/public/bundles/
-/var/
-/vendor/
-.env
-###< symfony/framework-bundle ###
+/.env.*
+/symfony.lock
 
-###> phpunit/phpunit ###
-/phpunit.xml
-.phpunit.result.cache
-###< phpunit/phpunit ###
+# Fichiers de configuration
+/.phpunit.result.cache
+/php-cs-fixer.*
+/phpstan.neon
+/.php_cs
+/.php_cs.cache
 
-###> symfony/phpunit-bridge ###
-.phpunit.result.cache
-/phpunit.xml
-###< symfony/phpunit-bridge ###
-*.DS_Store
+# Logs et caches
+/var/cache/*
+/var/log/*
+/var/sessions/*
+
+# Fichiers de configuration personnalisée
+/.idea
+/.vscode
+
+# Fichiers d'environnement
+/.env
+
+# Fichiers de sauvegarde
+*.bak
+*.swp
+
+# Fichiers de dépendances Composer
+/composer.lock
+
+# Fichiers de configuration Symfony Flex
+/.symfony/
