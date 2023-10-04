@@ -40,13 +40,7 @@ It's a Django project that manage collection of magic card.
 
 ## Installation
 
-1. Clone git repository
-
-    ```bash
-    git clone git@github.com:juliette39/lilianastrade.git
-    ```
-   
-2. Install PHP 8.1 (Linux)
+1. Install PHP 8.1 (Linux)
 
     ```bash
     sudo apt-get update
@@ -59,7 +53,7 @@ It's a Django project that manage collection of magic card.
     php -v
     ```
 
-3. Install the dependencies (Linux)
+2. Install the dependencies (Linux)
 
     ```bash
     sudo apt update
@@ -83,23 +77,26 @@ It's a Django project that manage collection of magic card.
     symfony composer -V
    ```
    
-4. Clone the repo
+3. Clone the repo
 
     ```bash
     git clone git@github.com:juliette39/lilianastrade.git
     ```
 
-5. Change `.env`
-
-    > Chose the driver sqlite and not postgresql
-
-6. Reload composer and the database
+4. Reload composer and the database
 
     ```bash
     rm -fr composer.lock symfony.lock var/cache/ vendor/
     symfony composer update
     symfony composer install
-   
+    ```
+
+5. Change `.env`
+
+    > Chose the driver sqlite by uncommented it (and comment the old one: postgresql)
+
+6. Reload the database
+   ```bash
     symfony console doctrine:database:drop --force
     symfony console doctrine:database:create
     symfony console doctrine:schema:create
