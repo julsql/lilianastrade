@@ -115,18 +115,7 @@ You need to configure your VM.
 
 After installing the project as explained in [Installation](#installation)
 
-Put the repo in `/var/www/lilianastrade`
-
-Then run the authorizations:
-
-```bash
-sudo chmod 777 /var/www/lilianastrade/var/log/
-sudo chown www-data:www-data /var/www/lilianastrade/var/log/
-sudo chmod 777 /var/www/lilianastrade/var/cache/
-sudo chown www-data:www-data /var/www/lilianastrade/var/cache/
-```
-
-Then configure the VM as follows:
+Configure the VM as follows:
 
 ```bash
 sudo nano /etc/apache2/sites-available/myconfig.conf
@@ -135,9 +124,9 @@ sudo nano /etc/apache2/sites-available/myconfig.conf
 ```
 <VirtualHost *:80>
     ServerName lilianastrade.h.minet.net
-    DocumentRoot /var/www/lilianastrade/public
+    DocumentRoot /home/juliettedebono/lilianastrade/public
 
-    <Directory /var/www/lilianastrade/public>
+    <Directory /home/juliettedebono/lilianastrade/public>
         AllowOverride None
         Require all granted
         Allow from All
