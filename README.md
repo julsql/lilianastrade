@@ -97,11 +97,11 @@ It's a Django project that manage collection of magic card.
 
 6. Reload the database
    ```bash
-    symfony console doctrine:database:drop --force
-    symfony console doctrine:database:create
-    symfony console doctrine:schema:create
-    symfony console doctrine:fixtures:load -n
-    ```
+   symfony console doctrine:database:drop --force
+   symfony console doctrine:database:create
+   symfony console doctrine:schema:create
+   symfony console doctrine:fixtures:load -n
+   ```
 
 7. Launch the website
 
