@@ -39,9 +39,9 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
     private static function myCollectionDataGenerator()
     {
         yield ["Collection", "User"];
-        yield ["Collection utilisée", "Skyfred"];
-        yield ["Collection réserve", "Skyfred"];
-        yield ["Collection", "Wolffair"];
+        yield ["Collection utilisée", "Marie"];
+        yield ["Collection réserve", "Marie"];
+        yield ["Collection", "Jean"];
     }
 
     /**
@@ -146,12 +146,12 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
      */
     private static function deckDataGenerator()
     {
-        yield ["Orzhov", "Blanc noir", "Skyfred", true];
-        yield ["Vial Smasher/Clone", "Grixis", "Skyfred", true];
-        yield ["Kinnan", "Deck combo", "Skyfred", false];
+        yield ["Orzhov", "Blanc noir", "Marie", true];
+        yield ["Vial Smasher/Clone", "Grixis", "Marie", true];
+        yield ["Kinnan", "Deck combo", "Marie", false];
         yield ["Témur Landfall", "Toucheterre aggro", "User", false];
-        yield ["Kenneth", "Cinq couleurs et combo", "Wolffair", true];
-        yield ["Vent des vertues", "Tricolore toucheterre", "Wolffair", true];
+        yield ["Kenneth", "Cinq couleurs et combo", "Jean", true];
+        yield ["Vent des vertues", "Tricolore toucheterre", "Jean", true];
     }
 
     /**
@@ -161,80 +161,80 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
      */
     private static function myCardsDataGenerator()
     {
-        yield ["Kinnan, Bonder Prodigy",      "Collection utilisée", "Skyfred", ['Kinnan', 'Vial Smasher/Clone'], ['Creature'], "Legendary", ['green', 'blue'], 2, "Dominaria", "Mythic"];
-        yield ["Elvish Mystic",               "Collection réserve", "Skyfred", ['Kinnan'], ['Creature'], "Normal", ['green'], 1, "Dominaria", "Common"];
-        yield ["Fyndhorn Elves",              "Collection", "Wolffair", ['Vent des vertues'], ['Creature'], "Normal", ['green'], 1, "Ikoria", "Common"];
-        yield ["Joraga Treespeaker",          "Collection", "Wolffair", ['Vent des vertues'], ['Creature'], "Normal", ['green'], 1, "Ikoria", "Uncommon"];
-        yield ["Prophet of Distortion",       "Collection", "Wolffair", ['Kenneth', 'Vent des vertues'], ['Creature'], "Normal", ['blue'], 1, "Ikoria", "Uncommon"];
-        yield ["Eldrazi Mimic",               "Collection", "Wolffair", ['Kenneth'], ['Creature'], "Normal", ['colorless'], 2, "Ikoria", "Rare"];
+        yield ["Kinnan, Bonder Prodigy",      "Collection utilisée", "Marie", ['Kinnan', 'Vial Smasher/Clone'], ['Creature'], "Legendary", ['green', 'blue'], 2, "Dominaria", "Mythic"];
+        yield ["Elvish Mystic",               "Collection réserve", "Marie", ['Kinnan'], ['Creature'], "Normal", ['green'], 1, "Dominaria", "Common"];
+        yield ["Fyndhorn Elves",              "Collection", "Jean", ['Vent des vertues'], ['Creature'], "Normal", ['green'], 1, "Ikoria", "Common"];
+        yield ["Joraga Treespeaker",          "Collection", "Jean", ['Vent des vertues'], ['Creature'], "Normal", ['green'], 1, "Ikoria", "Uncommon"];
+        yield ["Prophet of Distortion",       "Collection", "Jean", ['Kenneth', 'Vent des vertues'], ['Creature'], "Normal", ['blue'], 1, "Ikoria", "Uncommon"];
+        yield ["Eldrazi Mimic",               "Collection", "Jean", ['Kenneth'], ['Creature'], "Normal", ['colorless'], 2, "Ikoria", "Rare"];
         yield ["Incubation Druid",            "Collection", "User", ['Témur Landfall'], ['Creature'], "Normal", ['green'], 2, "Ikoria", "Rare"];
         yield ["Kiora's Follower",            "Collection", "User", ['Témur Landfall'], ['Creature'], "Normal", ['green', 'blue'], 2, "Dominaria", "Uncommon"];
         yield ["Ornithopter of Paradise",     "Collection", "User", ['Témur Landfall'], ['Artifact', 'Creature'], "Normal", ['colorless'], 2, "Dominaria", "Common"];
-        yield ["Phyrexian Revoker",           "Collection utilisée", "Skyfred", ['Vial Smasher/Clone'], ['Artifact', 'Creature'], "Normal", ['colorless'], 2, "Ikoria", "Rare"];
-        yield ["Elvish Archdruid",            "Collection réserve", "Skyfred", ['Kinnan'], ['Creature'], "Normal", ['green'], 3, "Ikoria", "Rare"];
-        yield ["Eternal Witness",             "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Creature'], "Normal", ['green'], 3, "Ikoria", "Uncommon"];
-        yield ["Gyre Engineer",               "Collection", "Wolffair", ['Kenneth', 'Vent des vertues'], ['Creature'], "Normal", ['green', 'blue'], 3, "Ikoria", "Uncommon"];
-        yield ["Omnath, Locus of Mana",       "Collection", "Wolffair", ['Vent des vertues'], ['Creature'], "Legendary", ['green'], 3, "Dominaria", "Mythic"];
-        yield ["Trophy Mage",                 "Collection", "Wolffair", ['Kenneth'], ['Creature'], "Normal", ['blue'], 3, "Dominaria", "Uncommon"];
-        yield ["Arixmethes, Slumbering Isle", "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Creature'], "Legendary", ['green', 'blue'], 4, "Ikoria", "Rare"];
-        yield ["Karametra's Acolyte",         "Collection utilisée", "Skyfred", ['Vial Smasher/Clone'], ['Creature'], "Legendary", ['green'], 4, "Ikoria", "Uncommon"];
+        yield ["Phyrexian Revoker",           "Collection utilisée", "Marie", ['Vial Smasher/Clone'], ['Artifact', 'Creature'], "Normal", ['colorless'], 2, "Ikoria", "Rare"];
+        yield ["Elvish Archdruid",            "Collection réserve", "Marie", ['Kinnan'], ['Creature'], "Normal", ['green'], 3, "Ikoria", "Rare"];
+        yield ["Eternal Witness",             "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Creature'], "Normal", ['green'], 3, "Ikoria", "Uncommon"];
+        yield ["Gyre Engineer",               "Collection", "Jean", ['Kenneth', 'Vent des vertues'], ['Creature'], "Normal", ['green', 'blue'], 3, "Ikoria", "Uncommon"];
+        yield ["Omnath, Locus of Mana",       "Collection", "Jean", ['Vent des vertues'], ['Creature'], "Legendary", ['green'], 3, "Dominaria", "Mythic"];
+        yield ["Trophy Mage",                 "Collection", "Jean", ['Kenneth'], ['Creature'], "Normal", ['blue'], 3, "Dominaria", "Uncommon"];
+        yield ["Arixmethes, Slumbering Isle", "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Creature'], "Legendary", ['green', 'blue'], 4, "Ikoria", "Rare"];
+        yield ["Karametra's Acolyte",         "Collection utilisée", "Marie", ['Vial Smasher/Clone'], ['Creature'], "Legendary", ['green'], 4, "Ikoria", "Uncommon"];
         yield ["Nylea, Keen-Eyed",            "Collection", "User", ['Témur Landfall'], ['Enchantment', 'Creature'], "Legendary", ['green'], 4, "Ikoria", "Mythic"];
-        yield ["Solemn Simulacrum",           "Collection utilisée", "Skyfred", ['Orzhov'], ['Artifact', 'Creature'], "Normal", ['colorless'], 4, "Ikoria", "Rare"];
-        yield ["Murkfiend Liege",             "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Creature'], "Normal", ['green', 'blue'], 11, "Ikoria", "Rare"];
+        yield ["Solemn Simulacrum",           "Collection utilisée", "Marie", ['Orzhov'], ['Artifact', 'Creature'], "Normal", ['colorless'], 4, "Ikoria", "Rare"];
+        yield ["Murkfiend Liege",             "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Creature'], "Normal", ['green', 'blue'], 11, "Ikoria", "Rare"];
         yield ["Seedborn Muse",               "Collection", "User", ['Témur Landfall'], ['Creature'], "Normal", ['green'], 5, "The Brothers War", "Rare"];
         yield ["Wandering Archaic",           "Collection", "User", ['Témur Landfall'], ['Creature'], "Normal", ['colorless'], 5, "Ikoria", "Rare"];
-        yield ["Bane of Progress",            "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Creature'], "Normal", ['green'], 6, "Dominaria", "Rare"];
-        yield ["Cradle Clearcutter",          "Collection", "Wolffair", ['Kenneth'], ['Artifact', 'Creature'], "Normal", ['colorless'], 6, "Ikoria", "Uncommon"];
-        yield ["Endbringer",                  "Collection utilisée", "Skyfred", ['Orzhov'], ['Creature'], "Normal", ['colorless'], 6, "Ikoria", "Rare"];
-        yield ["Hullbreaker Horror",          "Collection utilisée", "Skyfred", ['Vial Smasher/Clone'], ['Creature'], "Normal", ['blue'], 7, "Ikoria", "Rare"];
-        yield ["Nezahal, Primal Tide",        "Collection réserve", "Skyfred", ['Kinnan'], ['Creature'], "Legendary", ['blue'], 7, "Ikoria", "Rare"];
-        yield ["Kamahl, Heart of Krosa",      "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Creature'], "Normal", ['green'], 8, "Ikoria", "Mythic"];
-        yield ["Su-Chi Cave Guard",           "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Artifact', 'Creature'], "Normal", ['colorless'], 8, "Ikoria", "Uncommon"];
-        yield ["Rust Goliath",                "Collection utilisée", "Skyfred", ['Orzhov'], ['Artifact', 'Creature'], "Normal", ['colorless'], 10, "Ikoria", "Common"];
-        yield ["Jace, Wielder of Mysteries",  "Collection", "Wolffair", ['Vent des vertues'], ['Planeswalker'], "Legendary", ['blue'], 4, "Ikoria", "Rare"];
-        yield ["An Offer You Can't Refuse",   "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Instant'], "", ['blue'], 1, "Ikoria", "Uncommon"];
-        yield ["Brainstorm",                  "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Instant'], "", ['blue'], 1, "Ikoria", "Common"];
-        yield ["Worldly Tutor",               "Collection utilisée", "Skyfred", ['Orzhov'], ['Instant'], "", ['green'], 1, "Dominaria", "Uncommon"];
+        yield ["Bane of Progress",            "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Creature'], "Normal", ['green'], 6, "Dominaria", "Rare"];
+        yield ["Cradle Clearcutter",          "Collection", "Jean", ['Kenneth'], ['Artifact', 'Creature'], "Normal", ['colorless'], 6, "Ikoria", "Uncommon"];
+        yield ["Endbringer",                  "Collection utilisée", "Marie", ['Orzhov'], ['Creature'], "Normal", ['colorless'], 6, "Ikoria", "Rare"];
+        yield ["Hullbreaker Horror",          "Collection utilisée", "Marie", ['Vial Smasher/Clone'], ['Creature'], "Normal", ['blue'], 7, "Ikoria", "Rare"];
+        yield ["Nezahal, Primal Tide",        "Collection réserve", "Marie", ['Kinnan'], ['Creature'], "Legendary", ['blue'], 7, "Ikoria", "Rare"];
+        yield ["Kamahl, Heart of Krosa",      "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Creature'], "Normal", ['green'], 8, "Ikoria", "Mythic"];
+        yield ["Su-Chi Cave Guard",           "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Artifact', 'Creature'], "Normal", ['colorless'], 8, "Ikoria", "Uncommon"];
+        yield ["Rust Goliath",                "Collection utilisée", "Marie", ['Orzhov'], ['Artifact', 'Creature'], "Normal", ['colorless'], 10, "Ikoria", "Common"];
+        yield ["Jace, Wielder of Mysteries",  "Collection", "Jean", ['Vent des vertues'], ['Planeswalker'], "Legendary", ['blue'], 4, "Ikoria", "Rare"];
+        yield ["An Offer You Can't Refuse",   "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Instant'], "", ['blue'], 1, "Ikoria", "Uncommon"];
+        yield ["Brainstorm",                  "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Instant'], "", ['blue'], 1, "Ikoria", "Common"];
+        yield ["Worldly Tutor",               "Collection utilisée", "Marie", ['Orzhov'], ['Instant'], "", ['green'], 1, "Dominaria", "Uncommon"];
         yield ["Counterspell",                "Collection", "User", ['Témur Landfall'], ['Instant'], "", ['blue'], 2, "Ikoria", "Common"];
-        yield ["Dramatic Reversal",           "Collection utilisée", "Skyfred", ['Kinnan'], ['Instant'], "", ['blue'], 2, "Ikoria", "Common"];
-        yield ["Negate",                      "Collection", "Wolffair", ['Kenneth', 'Vent des vertues'], ['Instant'], "", ['blue'], 2, "Ikoria", "Common"];
-        yield ["Scatter Ray",                 "Collection", "Wolffair", ['Kenneth', 'Vent des vertues'], ['Instant'], "", ['blue'], 2, "Ikoria", "Common"];
-        yield ["Beast Within",                "Collection", "Wolffair", ['Kenneth'], ['Instant'], "", ['green'], 3, "Ikoria", "Uncommon"];
-        yield ["Blue Sun's Zenith",           "Collection", "Wolffair", ['Kenneth', 'Vent des vertues'], ['Instant'], "", ['blue'], 4, "Dominaria", "Rare"];
-        yield ["Cultivate",                   "Collection utilisée", "Skyfred", ['Vial Smasher/Clone'], ['Sorcery'], "Normal", ['green'], 3, "Midnight Hunt", "Common"];
-        yield ["Drown in Dreams",             "Collection utilisée", "Skyfred", ['Vial Smasher/Clone'], ['Instant'], "", ['blue'], 3, "The Brothers War", "Rare"];
-        yield ["Ertai's Scorn",               "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Instant'], "", ['blue'], 3, "The Brothers War", "Uncommon"];
-        yield ["Krosan Grip",                 "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Instant'], "", ['green'], 3, "Ikoria", "Uncommon"];
-        yield ["Monster Manual",              "Collection utilisée", "Skyfred", ['Orzhov'], ['Sorcery'], "Normal", ['green'], 3, "Dominaria", "Rare"];
-        yield ["Titan's Presence",            "Collection utilisée", "Skyfred", ['Vial Smasher/Clone'], ['Instant'], "", ['colorless'], 3, "Dominaria", "Uncommon"];
-        yield ["Windfall",                    "Collection", "Wolffair", ['Vent des vertues'], ['Sorcery'], "Normal", ['blue'], 3, "Ikoria", "Uncommon"];
-        yield ["Foil",                        "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Instant'], "", ['blue'], 4, "Ikoria", "Uncommon"];
-        yield ["Unexpected Results",          "Collection utilisée", "Skyfred", ['Orzhov'], ['Sorcery'], "Normal", ['green', 'blue'], 4, "Ikoria", "Rare"];
-        yield ["Sol Ring",                    "Collection réserve", "Skyfred", ['Kinnan'], ['Artifact'], "Normal", ['colorless'], 1, "Midnight Hunt", "Uncommon"];
-        yield ["Arcane Signet",               "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Artifact'], "Normal", ['colorless'], 2, "Dominaria", "Common"];
-        yield ["Moonsilver Key",              "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Artifact'], "Normal", ['colorless'], 2, "Dominaria", "Uncommon"];
-        yield ["Simic Signet",                "Collection utilisée", "Skyfred", ['Orzhov'], ['Artifact'], "Normal", ['colorless'], 2, "Ikoria", "Common"];
-        yield ["Swiftfoot Boots",             "Collection", "Wolffair", ['Kenneth', 'Vent des vertues'], ['Artifact'], "Normal", ['colorless'], 2, "The Brothers War", "Uncommon"];
-        yield ["Basalt Monolith",             "Collection", "Wolffair", ['Kenneth'], ['Artifact'], "Normal", ['colorless'], 3, "Ikoria", "Uncommon"];
-        yield ["Commander's Sphere",          "Collection", "Wolffair", ['Kenneth'], ['Artifact'], "Normal", ['colorless'], 3, "Dominaria", "Common"];
-        yield ["Mirage Mirror",               "Collection utilisée", "Skyfred", ['Orzhov'], ['Artifact'], "Normal", ['colorless'], 3, "Ikoria", "Rare"];
-        yield ["Relic of Legends",            "Collection réserve", "Skyfred", ['Kinnan'], ['Artifact'], "Normal", ['colorless'], 3, "The Brothers War", "Uncommon"];
-        yield ["Staff of Domination",         "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Artifact'], "Normal", ['colorless'], 3, "Ikoria", "Mythic"];
-        yield ["Rocket Launcher",             "Collection utilisée", "Skyfred", ['Orzhov'], ['Artifact'], "Normal", ['colorless'], 4, "Dominaria", "Rare"];
-        yield ["Sylvan Library",              "Collection réserve", "Skyfred", ['Kinnan'], ['Enchantment'], "Normal", ['green'], 2, "Ikoria", "Rare"];
-        yield ["Awakening Zone",              "Collection", "Wolffair", ['Kenneth'], ['Enchantment'], "Normal", ['green'], 3, "Midnight Hunt", "Rare"];
-        yield ["Freed from the Real",         "Collection utilisée", "Skyfred", ['Orzhov'], ['Enchantment'], "Normal", ['blue'], 3, "Ikoria", "Common"];
+        yield ["Dramatic Reversal",           "Collection utilisée", "Marie", ['Kinnan'], ['Instant'], "", ['blue'], 2, "Ikoria", "Common"];
+        yield ["Negate",                      "Collection", "Jean", ['Kenneth', 'Vent des vertues'], ['Instant'], "", ['blue'], 2, "Ikoria", "Common"];
+        yield ["Scatter Ray",                 "Collection", "Jean", ['Kenneth', 'Vent des vertues'], ['Instant'], "", ['blue'], 2, "Ikoria", "Common"];
+        yield ["Beast Within",                "Collection", "Jean", ['Kenneth'], ['Instant'], "", ['green'], 3, "Ikoria", "Uncommon"];
+        yield ["Blue Sun's Zenith",           "Collection", "Jean", ['Kenneth', 'Vent des vertues'], ['Instant'], "", ['blue'], 4, "Dominaria", "Rare"];
+        yield ["Cultivate",                   "Collection utilisée", "Marie", ['Vial Smasher/Clone'], ['Sorcery'], "Normal", ['green'], 3, "Midnight Hunt", "Common"];
+        yield ["Drown in Dreams",             "Collection utilisée", "Marie", ['Vial Smasher/Clone'], ['Instant'], "", ['blue'], 3, "The Brothers War", "Rare"];
+        yield ["Ertai's Scorn",               "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Instant'], "", ['blue'], 3, "The Brothers War", "Uncommon"];
+        yield ["Krosan Grip",                 "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Instant'], "", ['green'], 3, "Ikoria", "Uncommon"];
+        yield ["Monster Manual",              "Collection utilisée", "Marie", ['Orzhov'], ['Sorcery'], "Normal", ['green'], 3, "Dominaria", "Rare"];
+        yield ["Titan's Presence",            "Collection utilisée", "Marie", ['Vial Smasher/Clone'], ['Instant'], "", ['colorless'], 3, "Dominaria", "Uncommon"];
+        yield ["Windfall",                    "Collection", "Jean", ['Vent des vertues'], ['Sorcery'], "Normal", ['blue'], 3, "Ikoria", "Uncommon"];
+        yield ["Foil",                        "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Instant'], "", ['blue'], 4, "Ikoria", "Uncommon"];
+        yield ["Unexpected Results",          "Collection utilisée", "Marie", ['Orzhov'], ['Sorcery'], "Normal", ['green', 'blue'], 4, "Ikoria", "Rare"];
+        yield ["Sol Ring",                    "Collection réserve", "Marie", ['Kinnan'], ['Artifact'], "Normal", ['colorless'], 1, "Midnight Hunt", "Uncommon"];
+        yield ["Arcane Signet",               "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Artifact'], "Normal", ['colorless'], 2, "Dominaria", "Common"];
+        yield ["Moonsilver Key",              "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Artifact'], "Normal", ['colorless'], 2, "Dominaria", "Uncommon"];
+        yield ["Simic Signet",                "Collection utilisée", "Marie", ['Orzhov'], ['Artifact'], "Normal", ['colorless'], 2, "Ikoria", "Common"];
+        yield ["Swiftfoot Boots",             "Collection", "Jean", ['Kenneth', 'Vent des vertues'], ['Artifact'], "Normal", ['colorless'], 2, "The Brothers War", "Uncommon"];
+        yield ["Basalt Monolith",             "Collection", "Jean", ['Kenneth'], ['Artifact'], "Normal", ['colorless'], 3, "Ikoria", "Uncommon"];
+        yield ["Commander's Sphere",          "Collection", "Jean", ['Kenneth'], ['Artifact'], "Normal", ['colorless'], 3, "Dominaria", "Common"];
+        yield ["Mirage Mirror",               "Collection utilisée", "Marie", ['Orzhov'], ['Artifact'], "Normal", ['colorless'], 3, "Ikoria", "Rare"];
+        yield ["Relic of Legends",            "Collection réserve", "Marie", ['Kinnan'], ['Artifact'], "Normal", ['colorless'], 3, "The Brothers War", "Uncommon"];
+        yield ["Staff of Domination",         "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Artifact'], "Normal", ['colorless'], 3, "Ikoria", "Mythic"];
+        yield ["Rocket Launcher",             "Collection utilisée", "Marie", ['Orzhov'], ['Artifact'], "Normal", ['colorless'], 4, "Dominaria", "Rare"];
+        yield ["Sylvan Library",              "Collection réserve", "Marie", ['Kinnan'], ['Enchantment'], "Normal", ['green'], 2, "Ikoria", "Rare"];
+        yield ["Awakening Zone",              "Collection", "Jean", ['Kenneth'], ['Enchantment'], "Normal", ['green'], 3, "Midnight Hunt", "Rare"];
+        yield ["Freed from the Real",         "Collection utilisée", "Marie", ['Orzhov'], ['Enchantment'], "Normal", ['blue'], 3, "Ikoria", "Common"];
         yield ["Court of Bounty",             "Collection", "User", ['Témur Landfall'], ['Enchantment'], "Normal", ['green'], 4, "Ikoria", "Rare"];
-        yield ["Leyline of Anticipation",     "Collection utilisée", "Skyfred", ['Orzhov'], ['Enchantment'], "Normal", ['blue'], 4, "Midnight Hunt", "Rare"];
-        yield ["Command Tower",               "Collection utilisée", "Skyfred", ['Vial Smasher/Clone'], ['Land'], "Normal", ['colorless'], 0, "Dominaria", "Common"];
-        yield ["Emergence Zone",              "Collection", "Wolffair", ['Kenneth'], ['Land'], "Normal", ['colorless'], 0, "Ikoria", "Uncommon"];
+        yield ["Leyline of Anticipation",     "Collection utilisée", "Marie", ['Orzhov'], ['Enchantment'], "Normal", ['blue'], 4, "Midnight Hunt", "Rare"];
+        yield ["Command Tower",               "Collection utilisée", "Marie", ['Vial Smasher/Clone'], ['Land'], "Normal", ['colorless'], 0, "Dominaria", "Common"];
+        yield ["Emergence Zone",              "Collection", "Jean", ['Kenneth'], ['Land'], "Normal", ['colorless'], 0, "Ikoria", "Uncommon"];
         yield ["Exotic Orchard",              "Collection", "User", ['Témur Landfall'], ['Land'], "Normal", ['colorless'], 0, "Dominaria", "Rare"];
-        yield ["Forest",                      "Collection", "Wolffair", ['Kenneth', 'Vent des vertues'], ['Basic Land'], "", ['colorless'], 0, "Ikoria", "Common"];
-        yield ["Island",                      "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Basic Land'], "", ['colorless'], 0, "The Brothers War", "Common"];
-        yield ["Simic Growth Chamber",        "Collection utilisée", "Skyfred", ['Orzhov', 'Vial Smasher/Clone'], ['Land'], "Normal", ['colorless'], 0, "Ikoria", "Uncommon"];
-        yield ["Temple of Mystery",           "Collection", "Wolffair", ['Kenneth', 'Vent des vertues'], ['Land'], "Normal", ['colorless'], 0, "Midnight Hunt", "Rare"];
+        yield ["Forest",                      "Collection", "Jean", ['Kenneth', 'Vent des vertues'], ['Basic Land'], "", ['colorless'], 0, "Ikoria", "Common"];
+        yield ["Island",                      "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Basic Land'], "", ['colorless'], 0, "The Brothers War", "Common"];
+        yield ["Simic Growth Chamber",        "Collection utilisée", "Marie", ['Orzhov', 'Vial Smasher/Clone'], ['Land'], "Normal", ['colorless'], 0, "Ikoria", "Uncommon"];
+        yield ["Temple of Mystery",           "Collection", "Jean", ['Kenneth', 'Vent des vertues'], ['Land'], "Normal", ['colorless'], 0, "Midnight Hunt", "Rare"];
         yield ["Vineglimmer Snarl",           "Collection", "User", ['Témur Landfall'], ['Land'], "Normal", ['colorless'], 0, "Midnight Hunt", "Rare"];
-        yield ["Yavimaya Coast",              "Collection réserve", "Skyfred", ['Kinnan'], ['Land'], "Normal", ['colorless'], 0, "Ikoria", "Rare"];
+        yield ["Yavimaya Coast",              "Collection réserve", "Marie", ['Kinnan'], ['Land'], "Normal", ['colorless'], 0, "Ikoria", "Rare"];
     }
 
     public function load(ObjectManager $manager)
