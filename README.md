@@ -100,10 +100,16 @@ It's a Django project that manage collection of magic card.
    symfony console doctrine:database:drop --force
    symfony console doctrine:database:create
    symfony console doctrine:schema:create
-   symfony console doctrine:fixtures:load -n
+   symfony console doctrine:fixtures:load -n -e dev
    ```
-
-7. Launch the website
+   
+7. Give the correction permissions
+   ```bash
+   sudo chown -R www-data:www-data var/cache
+   sudo chown -R www-data:www-data var/log
+   ```
+   
+8. Launch the website
 
     ```bash
     symfony server:start
