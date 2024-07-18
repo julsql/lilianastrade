@@ -30,13 +30,13 @@ It's a Django project that manage collection of magic card.
   * user@email.com
   * 1234
 
-* Skyfred
-  * skyfred@gmail.com
-  * skyfredthebest
+* Marie
+  * marie@gmail.com
+  * mariethebest
 
-* Wolffair
-  * juliette.debono2002@gmail.com
-  * password
+* Jean
+  * jean_bon@gmail.com
+  * toutestbon
 
 ## Installation
 
@@ -80,7 +80,7 @@ It's a Django project that manage collection of magic card.
 3. Clone the repo
 
     ```bash
-    git clone git@github.com:juliette39/lilianastrade.git
+    git clone git@github.com:julsql/lilianastrade.git
     ```
 
 4. Reload composer and the database
@@ -124,9 +124,9 @@ sudo nano /etc/apache2/sites-available/myconfig.conf
 ```
 <VirtualHost *:80>
     ServerName lilianastrade.h.minet.net
-    DocumentRoot /home/juliettedebono/lilianastrade/public
+    DocumentRoot /home/username/lilianastrade/public
 
-    <Directory /home/juliettedebono/lilianastrade/public>
+    <Directory /home/username/lilianastrade/public>
         AllowOverride None
         Require all granted
         Allow from All
@@ -149,4 +149,4 @@ sudo service apache2 restart
 
 ## Authors
 
-- Juliette Debono
+- Jul SQL
