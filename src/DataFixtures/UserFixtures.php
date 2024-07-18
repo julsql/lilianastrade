@@ -52,13 +52,13 @@ class UserFixtures extends Fixture
             'ROLE_USER'
         ];
         yield [
-            'skyfred@gmail.com',
-            'skyfredthebest',
+            'marie@gmail.com',
+            'mariethebest',
             'ROLE_USER'
         ];
         yield [
-            'juliette.debono2002@gmail.com',
-            'password',
+            'jean_bon@gmail.com',
+            'toutestbon',
             'ROLE_ADMIN'
         ];
     }

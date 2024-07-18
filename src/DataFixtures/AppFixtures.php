@@ -27,8 +27,8 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
     private static function merchantDataGenerator()
     {
         yield ["User", "user@email.com"];
-        yield ["Skyfred", "skyfred@gmail.com"];
-        yield ["Wolffair", "juliette.debono2002@gmail.com"];
+        yield ["Marie", "marie@gmail.com"];
+        yield ["Jean", "jean_bon@gmail.com"];
     }
 
 
