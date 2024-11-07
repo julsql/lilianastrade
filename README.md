@@ -47,8 +47,8 @@ It's a Django project that manage collection of magic card.
     sudo apt-get install ca-certificates apt-transport-https software-properties-common wget curl lsb-release
     curl -sSL https://packages.sury.org/php/README.txt | sudo bash -x
     sudo apt-get update
-    sudo apt-get install php8.1
-    sudo apt-get install libapache2-mod-php8.1
+    sudo apt-get install php8.3
+    sudo apt-get install libapache2-mod-php8.3
     sudo systemctl restart apache2
     php -v
     ```
@@ -59,8 +59,8 @@ It's a Django project that manage collection of magic card.
     sudo apt update
     sudo apt full-upgrade
     
-    sudo apt install php8.1-cli
-    sudo apt install php8.1-xml php8.1-sqlite3 php8.1-intl php8.1-mbstring
+    sudo apt install php8.3-cli
+    sudo apt install php8.3-xml php8.3-sqlite3 php8.3-intl php8.3-mbstring
     php -m | grep "xml\|sqlite\|intl"
         intl
         libxml
