@@ -16,12 +16,12 @@ class UserFixtures extends Fixture
         $this->userPasswordHasherInterface = $userPasswordHasherInterface;
     }
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $this->LoadUsers($manager);
     }
 
-    private function loadUsers(ObjectManager $manager)
+    private function loadUsers(ObjectManager $manager): void
     {
         foreach ($this->getUserData() as [
                  $email,

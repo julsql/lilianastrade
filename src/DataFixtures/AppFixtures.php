@@ -237,7 +237,7 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
         yield ["Yavimaya Coast",              "Collection réserve", "Marie", ['Kinnan'], ['Land'], "Normal", ['colorless'], 0, "Ikoria", "Rare"];
     }
 
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $collRepo = $manager->getRepository(MyCollection::class);
         $mercRepo = $manager->getRepository(Merchant::class);
@@ -404,7 +404,7 @@ class AppFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
     }
 
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [
             UserFixtures::class,
