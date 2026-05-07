@@ -1,51 +1,37 @@
 **/.DS_Store
 
-# Dossiers Symfony var/
-/var/*
-
-# Dossiers Composer
+# Dépendances
 /vendor/
-/bin/
 /node_modules/
+
+# Caches & logs Symfony
+/var/
+
+# Assets buildés et uploads runtime
 /public/bundles/
 /public/build/
 /public/uploads/
 /public/media/
 
-# Fichiers Symfony
+# Env vars locales (les vrais secrets)
+/.env
 /.env.local
 /.env.local.php
-/.env.*
-/symfony.lock
+/.env.*.local
 
-# Fichiers de configuration
-/.phpunit.result.cache
-/php-cs-fixer.*
-/phpstan.neon
-/.php_cs
-/.php_cs.cache
-
-# Logs et caches
-/var/cache/*
-/var/log/*
-/var/sessions/*
-
-# Fichiers de configuration personnalisée
+# IDE
 .idea/
 .vscode/
 
-# Fichiers d'environnement
-/.env
-
-# Fichiers de sauvegarde
+# Backups & swap
 *.bak
 *.swp
 
-# Fichiers de dépendances Composer
-/composer.lock
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
 
-# Fichiers de configuration Symfony Flex
-/.symfony/
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -55,11 +41,6 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
-
-###> phpunit/phpunit ###
-/phpunit.xml
-.phpunit.result.cache
-###< phpunit/phpunit ###
 
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache

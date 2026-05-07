@@ -4,12 +4,14 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.0",
+        "php": ">=8.1",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-pdo_pgsql": "*",
         "camurphy/bootstrap-menu-bundle": "^1.5",
         "doctrine/annotations": "^1.0",
         "doctrine/doctrine-bundle": "^2.7",
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "doctrine/doctrine-migrations-bundle": "^3.2",
         "doctrine/orm": "^2.13",
         "easycorp/easyadmin-bundle": "^4",
@@ -50,7 +52,6 @@
         "vich/uploader-bundle": "^1.21"
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "phpunit/phpunit": "^9.5",
         "symfony/browser-kit": "5.4.*",
         "symfony/css-selector": "5.4.*",
@@ -67,6 +68,9 @@
             "symfony/runtime": true
         },
         "optimize-autoloader": true,
+        "platform": {
+            "php": "8.3"
+        },
         "preferred-install": {
             "*": "dist"
         },
