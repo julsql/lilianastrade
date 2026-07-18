@@ -117,41 +117,12 @@ It's a Django project that manage collection of magic card.
 
 ## Deploy
 
-You need to configure your VM.
+Deployment is fully automated through CI/CD:
 
-After installing the project as explained in [Installation](#installation)
+1. On push to `main`, the [`docker.yml`](.github/workflows/docker.yml) workflow builds the Docker image and pushes it to the GitHub Container Registry (GHCR).
+2. On the k3s cluster, [Keel](https://keel.sh) polls GHCR and, when it detects a new image digest, triggers a rollout of the deployment automatically.
 
-Configure the VM as follows:
-
-```bash
-sudo nano /etc/apache2/sites-available/myconfig.conf
-```
-
-```
-<VirtualHost *:80>
-    ServerName lilianastrade.h.minet.net
-    DocumentRoot /home/username/lilianastrade/public
-
-    <Directory /home/username/lilianastrade/public>
-        AllowOverride None
-        Require all granted
-        Allow from All
-
-        FallbackResource /index.php
-    </Directory>
-
-    ErrorLog ${APACHE_LOG_DIR}/error.log
-    CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-```
-
-You load the configuration and restart the apache server
-```bash
-sudo a2ensite myconfig.conf
-sudo service apache2 restart
-```
-
-> To unload a configuration: `sudo a2dissite myconfig.conf`
+The Kubernetes manifests live in the [`k3s-manifests`](https://github.com/julsql/k3s-manifests) repo.
 
 ## Authors
 
