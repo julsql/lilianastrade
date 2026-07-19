@@ -120,7 +120,7 @@ It's a Django project that manage collection of magic card.
 Deployment is fully automated through CI/CD:
 
 1. On push to `main`, the [`docker.yml`](.github/workflows/docker.yml) workflow builds the Docker image and pushes it to the GitHub Container Registry (GHCR).
-2. On the k3s cluster, [Keel](https://keel.sh) polls GHCR and, when it detects a new image digest, triggers a rollout of the deployment automatically.
+2. Deployment is automatic: after the push, the CI pings the server (Keel webhook), which updates its pods. No SSH, no manual `kubectl`.
 
 The Kubernetes manifests live in the [`k3s-manifests`](https://github.com/julsql/k3s-manifests) repo.
 
