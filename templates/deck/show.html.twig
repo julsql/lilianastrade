@@ -1,9 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Deck{% endblock %}
+{% block title %}{{ deck.name }} – Deck Magic de {{ deck.owner }}{% endblock %}
+
+{% block meta_description %}Deck Magic: The Gathering « {{ deck.name }} » de {{ deck.owner }} sur Liliana's Trade ({{ deck.cards|length }} cartes) : {{ deck.description|slice(0, 70) }}{% endblock %}
 
 {% block main %}
-    <h1>Deck</h1>
+    <h1>Deck {{ deck.name }}</h1>
 
     <table class="table">
         <tbody>
@@ -38,7 +40,6 @@
                 <td><a href="{{ path('app_deck_card_show', {'deck_id': deck.id, 'card_id' : card.id}) }}">{{ card }}</a></td>
             </tr>
         {% endfor %}
-    </ul>
     </tbody>
 </table>
     <div class="edit-button">

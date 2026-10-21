@@ -33,6 +33,7 @@ RUN composer install \
     && php bin/console assets:install public --symlink --no-interaction \
     && chown -R www-data:www-data var public/uploads public/media
 
+COPY docker/Caddyfile /etc/caddy/Caddyfile
 COPY docker/entrypoint.sh /usr/local/bin/app-entrypoint
 RUN chmod +x /usr/local/bin/app-entrypoint
 ENTRYPOINT ["/usr/local/bin/app-entrypoint"]
