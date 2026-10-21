@@ -72,7 +72,7 @@
             {% if card.imageName %}
             <tr>
                 <th>Image</th>
-                <td><img src="{{ vich_uploader_asset(card, 'imageFile') }}" alt="carte {{ card.name }}"/></td>
+                <td><img src="{{ vich_uploader_asset(card, 'imageFile') }}" alt="Carte Magic {{ card.name }}" loading="lazy" decoding="async"/></td>
             </tr>
         {% endif %}
         </tbody>

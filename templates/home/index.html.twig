@@ -1,11 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block head_title %}Liliana's Trade – Marché et decks Magic: The Gathering{% endblock %}
+
+{% block meta_description %}Liliana's Trade, le marché Magic: The Gathering de Liliana : consultez les decks publics des marchands et gérez en ligne votre collection de cartes.{% endblock %}
+
+{% block json_ld %}
+    <script type="application/ld+json">
+        {{ {
+            '@context': 'https://schema.org',
+            '@graph': [
+                {
+                    '@type': 'WebSite',
+                    '@id': site_url ~ '/#website',
+                    'url': site_url ~ '/',
+                    'name': "Liliana's Trade",
+                    'inLanguage': 'fr-FR'
+                },
+                {
+                    '@type': 'WebApplication',
+                    'name': "Liliana's Trade",
+                    'url': site_url ~ '/',
+                    'applicationCategory': 'GameApplication',
+                    'operatingSystem': 'Web',
+                    'inLanguage': 'fr-FR',
+                    'image': site_url ~ '/images/deco/Liliana%20full.jpg',
+                    'description': "Marché Magic: The Gathering : consultation des decks publics des marchands et gestion de collections de cartes.",
+                    'author': {'@type': 'Person', 'name': 'Jul SQL'},
+                    'isPartOf': {'@id': site_url ~ '/#website'}
+                }
+            ]
+        }|json_encode(constant('JSON_UNESCAPED_SLASHES') b-or constant('JSON_UNESCAPED_UNICODE'))|raw }}
+    </script>
+{% endblock %}
 
 {% block main %}
 
     <h1>Liliana's Trade</h1>
-    <img src="images/deco/Liliana.jpg" alt="Liliana image" id="lilianaHome"/>
+    <img src="/images/deco/Liliana.jpg" alt="Illustration de Liliana, la planeswalker" id="lilianaHome" width="1200" height="383" fetchpriority="high"/>
     <h2>Vous voici au cœur du marché de Liliana…</h2>
 
     {% if connexion %}
@@ -14,6 +45,6 @@
         <p id="presentation">Vous pouvez consulter les <a href="{{ path('app_deck_index') }}">decks</a> publiques des marchands, ou vous <a href="{{ path('app_login') }}">connecter</a> pour gérer votre collection de cartes.</p>
     {% endif %}
 
-    <img src="images/deco/Liliana2.jpg" alt="Liliana image Bas" id="lilianaHomeBas"/>
+    <img src="/images/deco/Liliana2.jpg" alt="Illustration de Liliana en bas de page" id="lilianaHomeBas" width="1200" height="281" loading="lazy" decoding="async"/>
 
 {% endblock %}
