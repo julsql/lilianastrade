@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /login
+Disallow: /logout
+Disallow: /collection
+Disallow: /merchant
+Disallow: /card
+Disallow: /deck/new
+Disallow: /_profiler
+Disallow: /_wdt
+
+Sitemap: https://lilianastrade.julsql.fr/sitemap.xml
