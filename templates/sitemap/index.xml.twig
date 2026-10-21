@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>{{ base_url }}{{ path('app_home') }}</loc>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>{{ base_url }}{{ path('app_deck_index') }}</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+{% for deck in decks %}
+    <url>
+        <loc>{{ base_url }}{{ path('app_deck_show', {id: deck.id}) }}</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+{% for card in deck.cards %}
+    <url>
+        <loc>{{ base_url }}{{ path('app_deck_card_show', {deck_id: deck.id, card_id: card.id}) }}</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
+    </url>
+{% endfor %}
+{% endfor %}
+</urlset>
