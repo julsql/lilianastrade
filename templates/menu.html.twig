@@ -1,0 +1,20 @@
+{% set menus = {
+    main: [
+        { label: 'Les decks', route: 'app_deck_index' },
+    ],
+    anonymousaccount: [
+        { label: 'Connexion', route: 'app_login' },
+    ],
+    account: [
+        { label: 'Mes cartes', route: 'app_card_index' },
+        { label: 'Mes collections', route: 'app_my_collection_index' },
+        { label: 'Mon profil', route: 'app_merchant_show' },
+        { label: 'Déconnexion', route: 'app_logout' },
+    ],
+} %}
+{% for item in menus[menu] %}
+    {% set is_active = app.request.attributes.get('_route') == item.route %}
+    <li class="nav-item">
+        <a class="nav-link{{ is_active ? ' active' }}"{% if is_active %} aria-current="page"{% endif %} href="{{ path(item.route) }}">{{ item.label }}</a>
+    </li>
+{% endfor %}

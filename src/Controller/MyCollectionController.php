@@ -10,15 +10,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 
-/**
- * @Route("/collection")
- * @IsGranted("IS_AUTHENTICATED_FULLY")
- */
+#[Route('/collection')]
+#[IsGranted('IS_AUTHENTICATED_FULLY')]
 class MyCollectionController extends AbstractController
 {
     #[Route('/', name: 'app_my_collection_index')]
@@ -44,6 +41,7 @@ class MyCollectionController extends AbstractController
     }
 
     #[Route('/new/{id}', name: 'app_my_collection_new', methods: ['GET', 'POST'])]
+    #[IsGranted('MANAGE', 'merchant')]
     public function new(Request $request, Merchant $merchant, EntityManagerInterface $entityManager): Response
     {
 
@@ -61,12 +59,12 @@ class MyCollectionController extends AbstractController
             // $this->addFlash() is equivalent to $request->getSession()->getFlashBag()->add()
             // or to $this->get('session')->getFlashBag()->add();
 
-            return $this->redirectToRoute('app_merchant_show', array(
+            return $this->redirectToRoute('app_merchant_show_id', array(
                 'id' => $merchant->id,
             ), Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('my_collection/new.html.twig', [
+        return $this->render('my_collection/new.html.twig', [
             'myCollection' => $myCollection,
             'form' => $form,
         ]);
@@ -75,8 +73,7 @@ class MyCollectionController extends AbstractController
     #[Route('/{id}', name: 'app_my_collection_show', methods: ['GET'])]
     public function show(MyCollection $myCollection): Response
     {
-        $hasAccess = $this->isGranted('ROLE_ADMIN') ||
-            ($this->getUser()->getMerchant() == $myCollection->getOwner());
+        $hasAccess = $this->isGranted('MANAGE', $myCollection);
         if(! $hasAccess) {
             throw $this->createAccessDeniedException("Vous n'avez pas le droit de voir la collection d'un autre marchand");
         }
@@ -87,44 +84,38 @@ class MyCollectionController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id_merchant}/edit/{id_collection}", name="app_my_collection_edit", methods={"GET", "POST"})
-     * @ParamConverter("myCollection", options={"id" = "id_collection"})
-     * @ParamConverter("merchant", options={"id" = "id_merchant"})
-     */
-    public function edit(Request $request, MyCollection $myCollection, Merchant $merchant, MyCollectionRepository $myCollectionRepository): Response
+    #[Route('/{id_merchant}/edit/{id_collection}', name: 'app_my_collection_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('MANAGE', 'myCollection')]
+    public function edit(
+        Request $request,
+        #[MapEntity(id: 'id_collection')] MyCollection $myCollection,
+        #[MapEntity(id: 'id_merchant')] Merchant $merchant,
+        MyCollectionRepository $myCollectionRepository,
+    ): Response
     {
+        if ($myCollection->getOwner() !== $merchant) {
+            throw $this->createNotFoundException("Cette collection n'appartient pas à ce marchand");
+        }
+
         $form = $this->createForm(MyCollectionType::class, $myCollection);
         $form->handleRequest($request);
-
-        $canModify = false;
-        if($this->isGranted('ROLE_ADMIN')) {
-            $canModify = true;
-        }
-        $user = $this->getUser();
-        if( $user ) {
-            $member = $user->getMerchant();
-            if ( $member &&  ($member == $myCollection->getOwner()) ) {
-                $canModify = true;
-            }
-        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $myCollectionRepository->save($myCollection, true);
 
             return $this->redirectToRoute('app_my_collection_show', array(
-                'id' => $merchant->id,
+                'id' => $myCollection->getId(),
             ), Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('my_collection/edit.html.twig', [
+        return $this->render('my_collection/edit.html.twig', [
             'myCollection' => $myCollection,
             'form' => $form,
-            'connect' => $canModify
         ]);
     }
 
     #[Route('/{id}', name: 'app_my_collection_delete', methods: ['POST'])]
+    #[IsGranted('MANAGE', 'myCollection')]
     public function delete(Request $request, MyCollection $myCollection, MyCollectionRepository $myCollectionRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$myCollection->getId(), $request->request->get('_token'))) {

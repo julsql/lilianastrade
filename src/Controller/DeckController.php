@@ -11,8 +11,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 
 #[Route('/deck')]
 class DeckController extends AbstractController
@@ -44,6 +45,7 @@ class DeckController extends AbstractController
     }
 
     #[Route('/new/{id}', name: 'app_deck_new', methods: ['GET', 'POST'])]
+    #[IsGranted('MANAGE', 'merchant')]
     public function new(Request $request, DeckRepository $deckRepository, Merchant $merchant, EntityManagerInterface $entityManager): Response
     {
         $deck = new Deck();
@@ -63,37 +65,17 @@ class DeckController extends AbstractController
             return $this->redirectToRoute('app_deck_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('deck/new.html.twig', [
+        return $this->render('deck/new.html.twig', [
             'deck' => $deck,
             'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="app_deck_show", methods={"GET"})
-     */
+    #[Route('/{id}', name: 'app_deck_show', methods: ['GET'])]
     public function show(Deck $deck): Response
     {
-        $hasAccess = false;
-        $canModify = false;
-        if($this->isGranted('ROLE_ADMIN')) {
-            $canModify = true;
-            $hasAccess = true;
-        }
-        else if($deck->isPublished()) {
-            $hasAccess = true;
-        }
-        else {
-            $user = $this->getUser();
-            if( $user ) {
-                $merchant = $user->getMerchant();
-                if ( $merchant &&  ($merchant == $deck->getOwner()) ) {
-                    $hasAccess = true;
-                    $canModify = true;
-                }
-            }
-        }
-        if(! $hasAccess) {
+        $canModify = $this->isGranted('MANAGE', $deck);
+        if (!$canModify && !$deck->isPublished()) {
             throw $this->createAccessDeniedException("Vous ne pouvez pas accéder à un deck non publique !");
         }
         return $this->render('deck/show.html.twig', [
@@ -104,37 +86,18 @@ class DeckController extends AbstractController
 
 
 
-    /**
-     * @Route("/{deck_id}/card/{card_id}", name="app_deck_card_show", methods={"GET"})
-     * @ParamConverter("deck", options={"id" = "deck_id"})
-     * @ParamConverter("card", options={"id" = "card_id"})
-     */
-
-    public function CardShow(Deck $deck, Card $card): Response
+    #[Route('/{deck_id}/card/{card_id}', name: 'app_deck_card_show', methods: ['GET'])]
+    public function CardShow(
+        #[MapEntity(id: 'deck_id')] Deck $deck,
+        #[MapEntity(id: 'card_id')] Card $card,
+    ): Response
     {
         if(! $deck->getCards()->contains($card)) {
             throw $this->createNotFoundException("Cette carte n'est pas dans ce deck");
         }
 
-        $hasAccess = false;
-        $canModify = false;
-        if($deck->isPublished()) {
-            $hasAccess = true;
-        }
-        else if($this->isGranted('ROLE_ADMIN')) {
-            $canModify = true;
-            $hasAccess = true;
-        }
-
-            $user = $this->getUser();
-            if( $user ) {
-                $member = $user->getMerchant();
-                if ( $member &&  ($member == $deck->getOwner()) ) {
-                    $hasAccess = true;
-                    $canModify = true;
-                }
-            }
-        if(! $hasAccess) {
+        $canModify = $this->isGranted('MANAGE', $deck);
+        if (!$canModify && !$deck->isPublished()) {
             throw $this->createAccessDeniedException("Vous n'avez pas accès à cette carte");
         }
 
@@ -146,21 +109,11 @@ class DeckController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_deck_edit', methods: ['GET', 'POST'])]
+    #[IsGranted('MANAGE', 'deck')]
     public function edit(Request $request, Deck $deck, DeckRepository $deckRepository): Response
     {
         $form = $this->createForm(DeckType::class, $deck);
         $form->handleRequest($request);
-        $canModify = false;
-        if($this->isGranted('ROLE_ADMIN')) {
-        $canModify = true;
-        }
-        $user = $this->getUser();
-        if( $user ) {
-            $member = $user->getMerchant();
-            if ( $member &&  ($member == $deck->getOwner()) ) {
-                $canModify = true;
-            }
-        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $deckRepository->save($deck, true);
@@ -168,14 +121,14 @@ class DeckController extends AbstractController
             return $this->redirectToRoute('app_deck_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('deck/edit.html.twig', [
+        return $this->render('deck/edit.html.twig', [
             'deck' => $deck,
             'form' => $form,
-            'connect' => $canModify,
         ]);
     }
 
     #[Route('/{id}', name: 'app_deck_delete', methods: ['POST'])]
+    #[IsGranted('MANAGE', 'deck')]
     public function delete(Request $request, Deck $deck, DeckRepository $deckRepository): Response
     {
         if ($this->isCsrfTokenValid('delete'.$deck->getId(), $request->request->get('_token'))) {

@@ -1,11 +1,13 @@
 name: Build & push image
 
-# Construit l'image FrankenPHP/Symfony et la pousse sur GHCR (privee).
+# Lance les tests, puis construit l'image FrankenPHP/Symfony et la pousse sur GHCR (privee).
 # Le deploiement est declenche par la CI : notification a Keel (webhook) apres le push.
+# Sur les PR, seuls les tests tournent.
 
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 env:
@@ -13,7 +15,52 @@ env:
   IMAGE_NAME: ${{ github.repository }} # julsql/lilianastrade
 
 jobs:
+  tests:
+    runs-on: ubuntu-latest
+    services:
+      database:
+        image: postgres:18-alpine
+        env:
+          POSTGRES_USER: app
+          POSTGRES_PASSWORD: '!ChangeMe!'
+          POSTGRES_DB: app_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U app"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.5'
+          extensions: pdo_pgsql, intl, zip, apcu
+          tools: composer:v2
+          coverage: none
+
+      # .env n'est pas versionne (il contient les secrets) mais Symfony (bootEnv) l'exige.
+      - name: Create .env placeholder
+        run: |
+          printf '%s\n' 'APP_ENV=dev' 'APP_SECRET=ci' \
+            'DATABASE_URL=postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=18&charset=utf8' > .env
+
+      - name: Install dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: Validate Doctrine mapping
+        run: php bin/console doctrine:schema:validate --skip-sync
+
+      - name: Run tests
+        run: vendor/bin/phpunit
+
   build-push:
+    needs: tests
+    if: github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     permissions:
       contents: read
