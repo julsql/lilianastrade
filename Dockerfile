@@ -1,4 +1,4 @@
-FROM dunglas/frankenphp:1-php8.3
+FROM dunglas/frankenphp:1-php8.5
 
 RUN install-php-extensions \
     pdo_pgsql \
@@ -20,7 +20,7 @@ COPY . .
 # .env placeholder : Symfony (bootEnv) exige /app/.env des le build (cache:warmup).
 # Les vraies valeurs sont injectees au runtime par le Secret k8s et priment sur ce
 # fichier (Dotenv n'ecrase pas les variables d'environnement deja definies).
-RUN printf 'APP_ENV=prod\nAPP_SECRET=build\nDATABASE_URL=postgresql://app:app@database:5432/app?serverVersion=14&charset=utf8\nMAILER_DSN=null://null\nMESSENGER_TRANSPORT_DSN=doctrine://default\n' > .env
+RUN printf 'APP_ENV=prod\nAPP_SECRET=build\nDATABASE_URL=postgresql://app:app@database:5432/app?serverVersion=18&charset=utf8\nMAILER_DSN=null://null\nMESSENGER_TRANSPORT_DSN=doctrine://default\n' > .env
 
 RUN composer install \
         --no-dev \

@@ -29,7 +29,7 @@ class HomeControllerTest extends WebTestCase
     public function testDeckIndexHasItsOwnTitleAndDescription(): void
     {
         $client = static::createClient();
-        $repository = $this->createMock(DeckRepository::class);
+        $repository = $this->createStub(DeckRepository::class);
         $repository->method('findBy')->willReturn([]);
         static::getContainer()->set(DeckRepository::class, $repository);
 
@@ -38,6 +38,25 @@ class HomeControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
         $this->assertCommonSeoTags($crawler, self::BASE_URL.'/deck/');
         $this->assertStringStartsWith('Decks Magic', $crawler->filter('title')->text());
+    }
+
+    public function testAnonymousMenuShowsLoginAndMarksActiveRoute(): void
+    {
+        $client = static::createClient();
+        $repository = $this->createStub(DeckRepository::class);
+        $repository->method('findBy')->willReturn([]);
+        static::getContainer()->set(DeckRepository::class, $repository);
+
+        $crawler = $client->request('GET', '/deck/');
+
+        $links = $crawler->filter('.navbar-nav .nav-link');
+        $this->assertSame(['Les decks', 'Connexion'], $links->each(fn (Crawler $link) => $link->text()));
+        $this->assertSame('/login', $links->eq(1)->attr('href'));
+
+        $active = $crawler->filter('.navbar-nav .nav-link.active');
+        $this->assertCount(1, $active);
+        $this->assertSame('Les decks', $active->text());
+        $this->assertSame('page', $active->attr('aria-current'));
     }
 
     private function assertCommonSeoTags(Crawler $crawler, string $expectedUrl): void

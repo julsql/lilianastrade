@@ -52,7 +52,7 @@ class DeckCrudController extends AbstractCrudController
                         $owner = $currentDeck->getOwner();
                         $merchantId = $owner->getId();
                         // charge les seuls [objets] dont le 'owner' de l'[inventaire] est le [createur] de la galerie
-                        $queryBuilder->leftJoin('entity.collection', 'i')
+                        $queryBuilder->leftJoin('entity.myCollection', 'i')
                             ->leftJoin('i.owner', 'm')
                             ->andWhere('m.id = :merchant_id')
                             ->setParameter('merchant_id', $merchantId);

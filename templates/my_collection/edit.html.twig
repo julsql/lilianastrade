@@ -5,10 +5,8 @@
 {% block main %}
     <h1>Modifier une collection</h1>
 
-        {% if connect %}
-            {{ include('my_collection/_form.html.twig', {'button_label': 'Modifier'}) }}
-            {{ include('my_collection/_delete_form.html.twig') }}
-        {% endif %}
+    {{ include('my_collection/_form.html.twig', {'button_label': 'Modifier'}) }}
+    {{ include('my_collection/_delete_form.html.twig') }}
 
     <a class="btn btn-primary" href="{{ path('app_my_collection_show', {'id': myCollection.id}) }}">Retour</a>
 

@@ -29,7 +29,6 @@ class Merchant
 
     public function __construct()
     {
-        $this->myCards = new ArrayCollection();
         $this->myCollection = new ArrayCollection();
         $this->decks = new ArrayCollection();
     }

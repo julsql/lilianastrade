@@ -24,9 +24,9 @@ class MerchantCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('pseudo'),
-            TextField::new('user.email'),
-            ArrayField::new('user.roles'),
-            AssociationField::new('myCollections')
+            TextField::new('user.email')->hideWhenCreating(),
+            ArrayField::new('user.roles')->hideWhenCreating(),
+            AssociationField::new('myCollection')
                 ->onlyOnDetail()
                 ->setTemplatePath('admin/fields/merchant_collection.html.twig')
         ];
