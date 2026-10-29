@@ -5,20 +5,15 @@ namespace App\Controller;
 use App\Entity\Card;
 use App\Form\CardType;
 use App\Repository\CardRepository;
-use Doctrine\Bundle\DoctrineBundle\Attribute\AsEntityListener;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-/**
- * @Route("/card")
- * @IsGranted("IS_AUTHENTICATED_FULLY")
- */
+#[Route('/card')]
+#[IsGranted('IS_AUTHENTICATED_FULLY')]
 class CardController extends AbstractController
 {
     #[Route('/', name: 'app_card_index', methods: ['GET'])]
@@ -58,7 +53,7 @@ class CardController extends AbstractController
             return $this->redirectToRoute('app_card_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('card/new.html.twig', [
+        return $this->render('card/new.html.twig', [
             'card' => $card,
             'form' => $form,
         ]);
@@ -109,7 +104,7 @@ class CardController extends AbstractController
                 'id' => $card->id), Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('card/edit.html.twig', [
+        return $this->render('card/edit.html.twig', [
             'card' => $card,
             'form' => $form,
             'connect' => $canModify

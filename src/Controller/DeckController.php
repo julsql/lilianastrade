@@ -11,8 +11,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 
 #[Route('/deck')]
 class DeckController extends AbstractController
@@ -63,15 +63,13 @@ class DeckController extends AbstractController
             return $this->redirectToRoute('app_deck_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('deck/new.html.twig', [
+        return $this->render('deck/new.html.twig', [
             'deck' => $deck,
             'form' => $form,
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="app_deck_show", methods={"GET"})
-     */
+    #[Route('/{id}', name: 'app_deck_show', methods: ['GET'])]
     public function show(Deck $deck): Response
     {
         $hasAccess = false;
@@ -104,13 +102,11 @@ class DeckController extends AbstractController
 
 
 
-    /**
-     * @Route("/{deck_id}/card/{card_id}", name="app_deck_card_show", methods={"GET"})
-     * @ParamConverter("deck", options={"id" = "deck_id"})
-     * @ParamConverter("card", options={"id" = "card_id"})
-     */
-
-    public function CardShow(Deck $deck, Card $card): Response
+    #[Route('/{deck_id}/card/{card_id}', name: 'app_deck_card_show', methods: ['GET'])]
+    public function CardShow(
+        #[MapEntity(id: 'deck_id')] Deck $deck,
+        #[MapEntity(id: 'card_id')] Card $card,
+    ): Response
     {
         if(! $deck->getCards()->contains($card)) {
             throw $this->createNotFoundException("Cette carte n'est pas dans ce deck");
@@ -168,7 +164,7 @@ class DeckController extends AbstractController
             return $this->redirectToRoute('app_deck_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('deck/edit.html.twig', [
+        return $this->render('deck/edit.html.twig', [
             'deck' => $deck,
             'form' => $form,
             'connect' => $canModify,

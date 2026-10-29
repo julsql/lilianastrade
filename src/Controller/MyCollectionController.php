@@ -10,15 +10,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 
-/**
- * @Route("/collection")
- * @IsGranted("IS_AUTHENTICATED_FULLY")
- */
+#[Route('/collection')]
+#[IsGranted('IS_AUTHENTICATED_FULLY')]
 class MyCollectionController extends AbstractController
 {
     #[Route('/', name: 'app_my_collection_index')]
@@ -66,7 +63,7 @@ class MyCollectionController extends AbstractController
             ), Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('my_collection/new.html.twig', [
+        return $this->render('my_collection/new.html.twig', [
             'myCollection' => $myCollection,
             'form' => $form,
         ]);
@@ -87,12 +84,13 @@ class MyCollectionController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id_merchant}/edit/{id_collection}", name="app_my_collection_edit", methods={"GET", "POST"})
-     * @ParamConverter("myCollection", options={"id" = "id_collection"})
-     * @ParamConverter("merchant", options={"id" = "id_merchant"})
-     */
-    public function edit(Request $request, MyCollection $myCollection, Merchant $merchant, MyCollectionRepository $myCollectionRepository): Response
+    #[Route('/{id_merchant}/edit/{id_collection}', name: 'app_my_collection_edit', methods: ['GET', 'POST'])]
+    public function edit(
+        Request $request,
+        #[MapEntity(id: 'id_collection')] MyCollection $myCollection,
+        #[MapEntity(id: 'id_merchant')] Merchant $merchant,
+        MyCollectionRepository $myCollectionRepository,
+    ): Response
     {
         $form = $this->createForm(MyCollectionType::class, $myCollection);
         $form->handleRequest($request);
@@ -117,7 +115,7 @@ class MyCollectionController extends AbstractController
             ), Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('my_collection/edit.html.twig', [
+        return $this->render('my_collection/edit.html.twig', [
             'myCollection' => $myCollection,
             'form' => $form,
             'connect' => $canModify
