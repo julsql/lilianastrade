@@ -6,6 +6,13 @@ It's a Django project that manage collection of magic card.
 
 > Website available at address: [lilianastrade.h.minet.net](http://lilianastrade.h.minet.net)
 
+## Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/home.jpg" alt="Home page" width="49%">
+  <img src="docs/screenshots/decks.png" alt="Public decks" width="49%">
+</p>
+
 ## Table of Contents
 
 - [App Structure](#app-structure)
