@@ -25,7 +25,7 @@ class Card
     public ?string $name = null;
 
     #[ORM\ManyToOne(inversedBy: 'card')]
-    public MyCollection $myCollection;
+    public ?MyCollection $myCollection = null;
 
     #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'card')]
     private Collection $type;

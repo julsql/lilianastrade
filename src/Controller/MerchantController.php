@@ -63,8 +63,7 @@ class MerchantController extends AbstractController
             'owner' => $merchant
         ]);
 
-        $hasAccess = $admin || ($this->getUser()->getMerchant() == $merchant);
-        if(! $hasAccess) {
+        if (!$this->isGranted('MANAGE', $merchant)) {
             throw $this->createAccessDeniedException("Vous ne pouvez pas accéder à la page d'un autre marchand !");
         }
 
