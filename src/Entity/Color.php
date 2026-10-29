@@ -18,7 +18,7 @@ class Color
     #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\ManyToMany(targetEntity: Card::class, mappedBy: 'couleur')]
+    #[ORM\ManyToMany(targetEntity: Card::class, mappedBy: 'color')]
     private Collection $cards;
 
 
