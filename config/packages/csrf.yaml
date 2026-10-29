@@ -1,11 +1,7 @@
-# Enable stateless CSRF protection for forms and logins/logouts
+# Jetons CSRF stockés en session (pas le mode stateless de la recipe) : la validation
+# stateless repose sur Origin/Referer, qui ne correspondent pas au schéma http vu
+# derrière la terminaison TLS de l'ingress.
 framework:
     form:
         csrf_protection:
             token_id: submit
-
-    csrf_protection:
-        stateless_token_ids:
-            - submit
-            - authenticate
-            - logout
