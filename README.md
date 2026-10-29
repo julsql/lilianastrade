@@ -109,7 +109,8 @@ kubectl scale deploy/lilianastrade --replicas=1
 Set `serverVersion=18` in `DATABASE_URL`. On startup, `doctrine:schema:update` only switches
 `messenger_messages.id` to an identity column: the business tables are left untouched.
 
-Locally, `docker compose` starts PostgreSQL 18 on a fresh database (the old 14 data is ignored).
+Locally, `docker compose` uses a new `db-data-18` volume: PostgreSQL 18 starts on a fresh database and
+the old `db-data` volume (PostgreSQL 14) is left untouched.
 
 ## Authors
 
