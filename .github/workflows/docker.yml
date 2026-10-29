@@ -45,15 +45,15 @@ jobs:
 
       # .env n'est pas versionne (il contient les secrets) mais Symfony (bootEnv) l'exige.
       - name: Create .env placeholder
-        run: printf 'APP_ENV=dev\nAPP_SECRET=ci\n' > .env
+        run: |
+          printf '%s\n' 'APP_ENV=dev' 'APP_SECRET=ci' \
+            'DATABASE_URL=postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=18&charset=utf8' > .env
 
       - name: Install dependencies
         run: composer install --no-progress --prefer-dist
 
       - name: Validate Doctrine mapping
         run: php bin/console doctrine:schema:validate --skip-sync
-        env:
-          DATABASE_URL: postgresql://app:!ChangeMe!@127.0.0.1:5432/app?serverVersion=18&charset=utf8
 
       - name: Run tests
         run: vendor/bin/phpunit
