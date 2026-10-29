@@ -10,7 +10,7 @@ It's a Django project that manage collection of magic card.
 
 <p align="center">
   <img src="docs/screenshots/home.jpg" alt="Home page" width="49%">
-  <img src="docs/screenshots/decks.png" alt="Public decks" width="49%">
+  <img src="docs/screenshots/card.png" alt="Card details" width="49%">
 </p>
 
 ## Table of Contents
