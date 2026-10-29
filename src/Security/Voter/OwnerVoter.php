@@ -46,6 +46,6 @@ class OwnerVoter extends Voter
             default => $subject->getOwner(),
         };
 
-        return null !== $owner && $owner->getId() === $user->getMerchant()->getId();
+        return null !== $owner?->getId() && $owner->getId() === $user->getMerchant()->getId();
     }
 }

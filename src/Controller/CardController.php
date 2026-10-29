@@ -98,7 +98,6 @@ class CardController extends AbstractController
         return $this->render('card/edit.html.twig', [
             'card' => $card,
             'form' => $form,
-            'connect' => true
         ]);
     }
 

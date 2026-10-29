@@ -60,6 +60,13 @@ class OwnerVoterTest extends TestCase
         $this->assertSame(VoterInterface::ACCESS_DENIED, $this->voter()->vote($this->tokenFor(new User()), $deck, ['MANAGE']));
     }
 
+    public function testUnpersistedOwnerIsDenied(): void
+    {
+        $token = $this->tokenFor((new User())->setEmail('new@example.com')->setMerchant(new Merchant()));
+
+        $this->assertSame(VoterInterface::ACCESS_DENIED, $this->voter()->vote($token, $this->deckOf(new Merchant()), ['MANAGE']));
+    }
+
     public function testCardWithoutCollectionIsDenied(): void
     {
         $token = $this->tokenFor($this->user($this->merchant()));
