@@ -1,14 +1,14 @@
 {# source: https://stackoverflow.com/a/65082524/1814910 #}
 <ul>
-    {% for card in field.value %}
+    {% for collection in field.value %}
     {%- set url = ea_url()
-        .setController('App\\Controller\\Admin\\CardCrudController')
+        .setController('App\\Controller\\Admin\\MyCollectionCrudController')
         .setAction('detail')
-        .setEntityId(card.id)
+        .setEntityId(collection.id)
     -%}
     <li>
         <a href="{{ url }}">
-            {{ card }}
+            {{ collection }}
         </a>
     </li>
     {% else %}
