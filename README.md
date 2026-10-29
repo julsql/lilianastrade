@@ -2,7 +2,7 @@
 
 This is the repo of the Liliana's Trade website!
 
-It's a Django project that manage collection of magic card.
+It's a Symfony project that manages collections of Magic cards.
 
 > Website available at address: [lilianastrade.julsql.fr](https://lilianastrade.julsql.fr)
 
