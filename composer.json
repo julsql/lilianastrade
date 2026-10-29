@@ -112,7 +112,7 @@
         "symfony": {
             "allow-contrib": true,
             "require": "8.*",
-            "docker": true
+            "docker": false
         }
     }
 }
