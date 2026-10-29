@@ -55,11 +55,11 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        {{ render_bootstrap_menu('main') }}
+                        {{ include('menu.html.twig', { menu: 'main' }) }}
                         {% if app.user %}
-                            {{ render_bootstrap_menu('account') }}
+                            {{ include('menu.html.twig', { menu: 'account' }) }}
                         {% else %}
-                            {{ render_bootstrap_menu('anonymousaccount') }}
+                            {{ include('menu.html.twig', { menu: 'anonymousaccount' }) }}
                         {% endif %}
                         {% if is_granted('ROLE_ADMIN') %}
                             <a class="navbar-brand" href="{{ path('admin') }}"><img src="{{ path('app_home') }}images/deco/settings.svg" alt="Administration" width="20" height="20" style="margin-left:20px;"></a>

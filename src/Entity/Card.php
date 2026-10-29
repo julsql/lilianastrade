@@ -8,12 +8,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Vich\UploaderBundle\Mapping\Attribute as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 
-/**
- * @Vich\Uploadable
- */
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: CardRepository::class)]
 class Card
 {
@@ -50,11 +48,8 @@ class Card
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageName = null;
 
-    /**
-     * @Vich\UploadableField(mapping="cards", fileNameProperty="imageName")
-     * @var File
-     */
-    private $imageFile;
+    #[Vich\UploadableField(mapping: 'cards', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
 
 
     public function __construct()

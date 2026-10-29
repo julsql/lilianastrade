@@ -7,15 +7,11 @@ use App\Repository\DeckRepository;
 use App\Repository\MerchantRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-/**
- * @Route("/merchant")
- * @IsGranted("IS_AUTHENTICATED_FULLY")
- */
+#[Route('/merchant')]
+#[IsGranted('IS_AUTHENTICATED_FULLY')]
 class MerchantController extends AbstractController
 {
 

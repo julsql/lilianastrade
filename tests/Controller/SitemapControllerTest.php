@@ -45,7 +45,6 @@ class SitemapControllerTest extends WebTestCase
     private function withId(object $entity, int $id): object
     {
         $property = new \ReflectionProperty($entity, 'id');
-        $property->setAccessible(true);
         $property->setValue($entity, $id);
 
         return $entity;
