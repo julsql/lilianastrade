@@ -4,7 +4,14 @@ This is the repo of the Liliana's Trade website!
 
 It's a Django project that manage collection of magic card.
 
-> Website available at address: [lilianastrade.h.minet.net](http://lilianastrade.h.minet.net)
+> Website available at address: [lilianastrade.julsql.fr](https://lilianastrade.julsql.fr)
+
+## Screenshots
+
+<p align="center">
+  <img src="docs/screenshots/home.jpg" alt="Home page" width="49%">
+  <img src="docs/screenshots/card.png" alt="Card details" width="49%">
+</p>
 
 ## Table of Contents
 
