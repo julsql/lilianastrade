@@ -124,7 +124,6 @@ class DeckController extends AbstractController
         return $this->render('deck/edit.html.twig', [
             'deck' => $deck,
             'form' => $form,
-            'connect' => true,
         ]);
     }
 

@@ -28,6 +28,18 @@ class MyCollectionControllerTest extends DatabaseWebTestCase
         $this->assertResponseStatusCodeSame(403);
     }
 
+    public function testEditReturns404WhenMerchantDoesNotOwnCollection(): void
+    {
+        $owner = $this->createMerchant('owner');
+        $collection = $this->createCollection($owner);
+        $other = $this->createMerchant('other');
+        $this->loginAs($owner);
+
+        $this->client->request('GET', sprintf('/collection/%d/edit/%d', $other->getId(), $collection->getId()));
+
+        $this->assertResponseStatusCodeSame(404);
+    }
+
     public function testNewRedirectsToMerchantPage(): void
     {
         $owner = $this->createMerchant('owner');

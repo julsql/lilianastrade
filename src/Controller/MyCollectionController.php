@@ -93,6 +93,10 @@ class MyCollectionController extends AbstractController
         MyCollectionRepository $myCollectionRepository,
     ): Response
     {
+        if ($myCollection->getOwner() !== $merchant) {
+            throw $this->createNotFoundException("Cette collection n'appartient pas à ce marchand");
+        }
+
         $form = $this->createForm(MyCollectionType::class, $myCollection);
         $form->handleRequest($request);
 
@@ -107,7 +111,6 @@ class MyCollectionController extends AbstractController
         return $this->render('my_collection/edit.html.twig', [
             'myCollection' => $myCollection,
             'form' => $form,
-            'connect' => true
         ]);
     }
 
